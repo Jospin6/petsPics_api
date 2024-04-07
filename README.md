@@ -12,6 +12,7 @@
 - Axios
 - Tailwindcss
 - Postman
+- Sequelize
 - Node js
 - Express
 - PostgreSQL
