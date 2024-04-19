@@ -3,7 +3,8 @@ const express = require('express')
 const app = express()
 const port = 3001
 
-const db = require("./models")
+app.use(express.json())
+
 // Routes
 const userRouter = require("./routes/users")
 app.use(userRouter),
