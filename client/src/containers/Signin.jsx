@@ -34,7 +34,7 @@ export const Signin = () => {
                     onchange={handlePassword}
                     placeholder="Enter your password"
                 />
-                <SubmitFormBtn text="Login" />
+                <SubmitFormBtn text="Sign In" />
             </form>
         </FormFrame>
     </div>
