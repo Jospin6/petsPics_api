@@ -16,7 +16,9 @@ export const Signin = () => {
         <FormFrame
             formTitle="Sign in to petsPics"
             formDescription="Lorem ipsum dolor sit amet consectetur adipisicing elit. At soluta 
-            unde sint qui, quis aut illo vitae velit.">
+            unde sint qui, quis aut illo vitae velit."
+            linkText="&#8592; LogIn"
+            link_path="/">
             <form method="post">
                 <Input
                     labelText="User name"

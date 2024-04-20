@@ -1,11 +1,12 @@
+import { Link } from 'react-router-dom'
 import cat from '../assets/images/cat.jpg'
 import { Image } from './Image'
 
 export const FormFrame = (props) => {
-    const {formTitle, formDescription, children} = props
+    const {formTitle, formDescription,link_path, linkText, children} = props
     return <div className="w-[60%] h-[500px] grid grid-cols-8 rounded-lg shadow">
         <div className="col-span-4 h-full p-4 rounded-l-lg flex items-center justify-center">
-            <div className="w-[80%] h-[300px] relative">
+            <div className="w-[80%] min-h-[300px] h-auto relative">
                 <div className="text-lg semi-bold">
                     { formTitle }
                 </div>
@@ -14,6 +15,9 @@ export const FormFrame = (props) => {
                 </div>
                 <div className='mt-6'>
                     { children }
+                </div>
+                <div className='mt-6 flex justify-center'>
+                    <Link to={link_path}> {linkText} </Link>
                 </div>
             </div>
         </div>
