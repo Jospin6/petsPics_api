@@ -1,17 +1,23 @@
 import { Input } from '../components/Input'
 import { SubmitFormBtn } from '../components/SubmitFormBtn'
 import { Checkbox } from '../components/Checkbox'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { FormFrame } from '../components/FormFrame'
 import {initialValues, validationSchema} from '../helpers/userHelper'
+import { userLogin } from '../slices/user/userSlice'
+import { useDispatch } from 'react-redux'
 
 
 export const Login = () => {
+    const dispatch = useDispatch()
+    let navigate = useNavigate()
 
     const initialLoginValues = { ...initialValues, checked: false }
 
-    const submit = () => {
-        console.log("sent")
+    const submit = (data, { resetForm }) => {
+        dispatch(userLogin(data))
+        resetForm()
+        navigate("/home")
     }
 
     return <div className="w-full h-[100vh] flex items-center justify-center">

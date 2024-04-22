@@ -13,7 +13,7 @@ export const userRegistration = createAsyncThunk("user/userRegistration", async 
     })
 })
 
-export const userLoginin = createAsyncThunk("user/userLoginin", async (data) => {
+export const userLogin = createAsyncThunk("user/userLogin", async (data) => {
     return await axios.post("http://localhost:3001/users/login", data).then(response => {
         console.log("It worked")
     })
