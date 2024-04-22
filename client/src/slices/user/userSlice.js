@@ -13,6 +13,12 @@ export const userRegistration = createAsyncThunk("user/userRegistration", async 
     })
 })
 
+export const userLoginin = createAsyncThunk("user/userLoginin", async (data) => {
+    const {userName, password, checked} = data
+    
+
+})
+
 export const fetchUsers = createAsyncThunk("user/fetchUsers", async () => {
     return await axios.get("http://localhost:3001/users")
     .then(response => response.data)
