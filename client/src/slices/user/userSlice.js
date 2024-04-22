@@ -7,6 +7,11 @@ const initialState = {
     error: ""
 }
 
+export const userRegistration = createAsyncThunk("user/userRegistration", async (data) => {
+    return await axios.post("http://localhost:3001/users", data).then(response => {
+        console.log("It worked")
+    })
+})
 
 export const fetchUsers = createAsyncThunk("user/fetchUsers", async () => {
     return await axios.get("http://localhost:3001/users")

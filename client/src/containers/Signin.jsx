@@ -1,11 +1,13 @@
 import { Input } from '../components/Input'
-import { useState } from 'react'
 import { SubmitFormBtn } from '../components/SubmitFormBtn'
 import { FormFrame } from '../components/FormFrame'
+import { useDispatch } from 'react-redux'
+import { userRegistration } from '../slices/user/userSlice'
 import * as Yup from 'yup'
 
 
 export const Signin = () => {
+    const dispatch = useDispatch()
 
     const initialValues = {
         userName: "",
@@ -17,8 +19,9 @@ export const Signin = () => {
         password: Yup.string().required()
     })
 
-    const submit = () => {
-        console.log("sent")
+    const submit = (data, { resetForm }) => {
+        dispatch(userRegistration(data))
+        resetForm()
     }
 
     return <div className="w-full h-[100vh] flex items-center justify-center">
