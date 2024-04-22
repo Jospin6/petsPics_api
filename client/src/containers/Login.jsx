@@ -3,21 +3,12 @@ import { SubmitFormBtn } from '../components/SubmitFormBtn'
 import { Checkbox } from '../components/Checkbox'
 import { Link } from 'react-router-dom'
 import { FormFrame } from '../components/FormFrame'
-import * as Yup from 'yup'
+import {initialValues, validationSchema} from '../helpers/userHelper'
 
 
 export const Login = () => {
 
-    const initialValues = {
-        userName: "",
-        password: "",
-        checked: false
-    }
-
-    const validationSchema = Yup.object({
-        userName: Yup.string().required(),
-        password: Yup.string().required(),
-    })
+    const initialLoginValues = { ...initialValues, checked: false }
 
     const submit = () => {
         console.log("sent")
@@ -30,7 +21,7 @@ export const Login = () => {
             unde sint qui, quis aut illo vitae velit."
             linkText="Sign In &#8594;"
             link_path="/registration"
-            initialValue={initialValues}
+            initialValue={initialLoginValues}
             onsubmit={submit}
             validationschema={validationSchema}>
             <Input

@@ -3,23 +3,13 @@ import { SubmitFormBtn } from '../components/SubmitFormBtn'
 import { FormFrame } from '../components/FormFrame'
 import { useDispatch } from 'react-redux'
 import { userRegistration } from '../slices/user/userSlice'
-import * as Yup from 'yup'
 import { useNavigate } from "react-router-dom"
+import {initialValues, validationSchema} from '../helpers/userHelper'
 
 
 export const Signin = () => {
     const dispatch = useDispatch()
     let navigate = useNavigate()
-
-    const initialValues = {
-        userName: "",
-        password: ""
-    }
-
-    const validationSchema = Yup.object({
-        userName: Yup.string().required(),
-        password: Yup.string().required()
-    })
 
     const submit = (data, { resetForm }) => {
         dispatch(userRegistration(data))
