@@ -9,7 +9,7 @@ app.use(cors())
 app.use(express.json())
 
 // Routes
-const userRouter = require("./routes/users")
+const userRouter = require("./routes/Users")
 app.use(userRouter),
 
 

@@ -14,9 +14,9 @@ export const userRegistration = createAsyncThunk("user/userRegistration", async 
 })
 
 export const userLoginin = createAsyncThunk("user/userLoginin", async (data) => {
-    const {userName, password, checked} = data
-    
-
+    return await axios.post("http://localhost:3001/users/login", data).then(response => {
+        console.log("It worked")
+    })
 })
 
 export const fetchUsers = createAsyncThunk("user/fetchUsers", async () => {
