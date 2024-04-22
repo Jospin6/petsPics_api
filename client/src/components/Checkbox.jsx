@@ -1,11 +1,11 @@
+import { Field } from 'formik'
 
 export const Checkbox = (props) => {
-    const { checked, onchange, id, labelText } = props
+    const { checked, id, labelText } = props
     return <div className="mt-[5px]">
-        <input 
+        <Field 
             type="checkbox" 
-            checked={checked} 
-            onChange={onchange} 
+            name={checked}
             id={id} 
             className="border-[1px] mr-[2px] border-gray-400 rounded-lg 
             outline-none"/>
