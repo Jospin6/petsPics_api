@@ -1,8 +1,11 @@
 import { Field } from 'formik'
+import { FieldErrorMessage } from './FieldErrorMessage'
+
 export const Input = (props) => {
     const {labelText, id, fieldName, type, placeholder} = props
     return <div className="mt-2">
         <label htmlFor={id} className="block mb-[5px] bolder text-[16px]"> { labelText } </label>
+        <FieldErrorMessage fieldName={fieldName}/>
         <Field 
             id={id} 
             name={fieldName}
