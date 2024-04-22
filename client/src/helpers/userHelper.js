@@ -10,7 +10,10 @@ const validationSchema = Yup.object({
     password: Yup.string().required()
 })
 
+const getUsers = state => state.user.users
+
 export {
     initialValues,
-    validationSchema
+    validationSchema,
+    getUsers
 }
