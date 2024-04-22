@@ -4,10 +4,12 @@ import { FormFrame } from '../components/FormFrame'
 import { useDispatch } from 'react-redux'
 import { userRegistration } from '../slices/user/userSlice'
 import * as Yup from 'yup'
+import { useNavigate } from "react-router-dom"
 
 
 export const Signin = () => {
     const dispatch = useDispatch()
+    let navigate = useNavigate()
 
     const initialValues = {
         userName: "",
@@ -22,6 +24,7 @@ export const Signin = () => {
     const submit = (data, { resetForm }) => {
         dispatch(userRegistration(data))
         resetForm()
+        navigate("/home")
     }
 
     return <div className="w-full h-[100vh] flex items-center justify-center">
