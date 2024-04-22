@@ -1,5 +1,6 @@
 import { useDispatch, useSelector } from 'react-redux'
-import { getUsers, fetchUsers } from '../slices/user/userSlice'
+import { getUsers } from '../slices/user/userSlice'
+import { fetchUsers } from '../slices/user/userApi'
 import { useEffect } from 'react'
 
 export const Home = () => {

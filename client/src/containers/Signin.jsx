@@ -2,7 +2,7 @@ import { Input } from '../components/Input'
 import { SubmitFormBtn } from '../components/SubmitFormBtn'
 import { FormFrame } from '../components/FormFrame'
 import { useDispatch } from 'react-redux'
-import { userRegistration } from '../slices/user/userSlice'
+import { userRegistration } from '../slices/user/userApi'
 import { useNavigate } from "react-router-dom"
 import {initialValues, validationSchema} from '../helpers/userHelper'
 

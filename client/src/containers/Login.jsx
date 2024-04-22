@@ -4,7 +4,7 @@ import { Checkbox } from '../components/Checkbox'
 import { Link, useNavigate } from 'react-router-dom'
 import { FormFrame } from '../components/FormFrame'
 import {initialValues, validationSchema} from '../helpers/userHelper'
-import { userLogin } from '../slices/user/userSlice'
+import { userLogin } from '../slices/user/userApi'
 import { useDispatch } from 'react-redux'
 
 
