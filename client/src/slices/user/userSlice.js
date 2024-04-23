@@ -5,6 +5,7 @@ const initialState = {
     loading: false,
     users: [],
     isAuth: false,
+    currentUser: {},
     error: ""
 }
 
@@ -22,7 +23,8 @@ const userSlice = createSlice({
         })
         builder.addCase(fetchUsers.fulfilled, (state, action) => {
             state.loading = false
-            state.users = action.payload
+            state.users = action.payload.getUsers
+            state.currentUser = action.payload.currentUser
             state.error = ""
         })
         builder.addCase(fetchUsers.rejected, (state, action) => {

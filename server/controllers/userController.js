@@ -4,8 +4,9 @@ const bcryptjs = require("bcryptjs")
 const { sign } = require("jsonwebtoken")
 
 const getUsers = async (req, res) => {
-    const getusers = await User.findAll()
-    res.json(getusers)
+    const getUsers = await User.findAll()
+    const currentUser = req.user
+    res.json({getUsers, currentUser})
 }
 
 const create = async (req, res) => {
