@@ -3,13 +3,17 @@ import axios from 'axios'
 
 export const userRegistration = createAsyncThunk("user/userRegistration", async (data) => {
     return await axios.post("http://localhost:3001/users", data).then(response => {
-        console.log("It worked")
+        localStorage.setItem("accessToken", response.data)
     })
 })
 
 export const userLogin = createAsyncThunk("user/userLogin", async (data) => {
     return await axios.post("http://localhost:3001/users/login", data).then(response => {
-        console.log("It worked")
+        if (response.data.error) {
+            console.log(response.data.error)
+        } else {
+            localStorage.setItem("accessToken", response.data)
+        }
     })
 })
 
