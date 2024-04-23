@@ -11,9 +11,11 @@ const validationSchema = Yup.object({
 })
 
 const getUsers = state => state.user.users
+const isUserAuth = state => state.user.isAuth
 
 export {
     initialValues,
     validationSchema,
-    getUsers
+    getUsers,
+    isUserAuth
 }

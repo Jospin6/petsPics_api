@@ -4,12 +4,18 @@ import { fetchUsers } from './userApi'
 const initialState = {
     loading: false,
     users: [],
+    isAuth: false,
     error: ""
 }
 
 const userSlice = createSlice({
     name: "user",
     initialState,
+    reducers: {
+        checkeAuth: (state, action) => {
+            state.isAuth = action.payload
+        }
+    },
     extraReducers: (builder) => {
         builder.addCase(fetchUsers.pending, (state) => {
             state.loading = true
@@ -26,5 +32,7 @@ const userSlice = createSlice({
         })
     }
 })
+
+export const { checkeAuth } = userSlice.actions
 
 export default userSlice.reducer

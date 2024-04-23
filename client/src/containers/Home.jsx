@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from 'react-redux'
-import { getUsers } from '../helpers/userHelper'
+import { getUsers, isUserAuth } from '../helpers/userHelper'
 import { fetchUsers } from '../slices/user/userApi'
 import { useEffect } from 'react'
 
@@ -12,8 +12,7 @@ export const Home = () => {
     }, [dispatch])
 
     return <div>
-        {
-            users.map(user => (
+        {   users.map(user => (
                 <div className='text-red-500' key={user.id}> {user.userName} </div>
             ))
         }
