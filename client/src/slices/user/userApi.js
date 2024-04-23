@@ -18,7 +18,11 @@ export const userLogin = createAsyncThunk("user/userLogin", async (data) => {
 })
 
 export const fetchUsers = createAsyncThunk("user/fetchUsers", async () => {
-    return await axios.get("http://localhost:3001/users")
+    return await axios.get("http://localhost:3001/users", {
+        headers: {
+            accessToken: localStorage.getItem("accessToken")
+        }
+    })
     .then(response => response.data)
     .catch(error => error.message)
 })

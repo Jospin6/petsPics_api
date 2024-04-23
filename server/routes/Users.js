@@ -1,5 +1,6 @@
 const express = require("express")
 const router = new express.Router()
+const {validateToken} = require("../middlewares/authMiddleware")
 const { 
     getUsers,
     create,
@@ -7,7 +8,7 @@ const {
  } = require("../controllers/userController")
 
 
-router.get("/users", getUsers)
+router.get("/users", validateToken, getUsers)
 
 router.post("/users", create)
 
