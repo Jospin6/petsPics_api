@@ -1,37 +1,17 @@
 const express = require("express")
 const router = new express.Router()
-const { User } = require("../models")
-const bcryptjs = require("bcryptjs")
+const { 
+    getUsers,
+    create,
+    login
+ } = require("../controllers/userController")
 
 
-router.get("/users", async (req, res) => {
-    const getusers = await User.findAll()
-    res.json(getusers)
-})
+router.get("/users", getUsers)
 
-router.post("/users", async (req, res) => {
-    const {userName, password} = req.body
-    bcryptjs.hash(password, 10).then(hash => {
-        User.create({
-            userName: userName,
-            password: hash
-        })
-    })
-    res.json("SUCCESS")
-})
+router.post("/users", create)
 
-router.post("/users/login", async (req, res) => {
-    const { userName, password, checked } = req.body
-    const user = await User.findOne({ where: { userName: userName } })
-
-    if(!user) res.json({ error: "User doesn't exist" })
-
-    bcryptjs.compare(password, user.password)
-    .then(match => {
-        if(!match) res.json({ error: "Wrong password" })
-        res.json("LOGGED SUCCESS !!!")
-    })
-})
+router.post("/users/login", login)
 
 
 module.exports = router
