@@ -1,6 +1,7 @@
 
 const { User } = require("../models")
 const bcryptjs = require("bcryptjs")
+const { sign } = require("jsonwebtoken")
 
 const getUsers = async (req, res) => {
     const getusers = await User.findAll()
@@ -10,12 +11,13 @@ const getUsers = async (req, res) => {
 const create = async (req, res) => {
     const {userName, password} = req.body
     bcryptjs.hash(password, 10).then(hash => {
-        User.create({
+        const user = User.create({
             userName: userName,
             password: hash
         })
+        const accessToken = sign({userName: user.userName, id: user.id}, "authToken")
+        res.json(accessToken)
     })
-    res.json("SUCCESS")
 }
 
 const login = async (req, res) => {
@@ -27,7 +29,8 @@ const login = async (req, res) => {
     bcryptjs.compare(password, user.password)
     .then(match => {
         if(!match) res.json({ error: "Wrong password" })
-        res.json("LOGGED SUCCESS !!!")
+        const accessToken = sign({userName: user.userName, id: user.id}, "authToken")
+        res.json(accessToken)
     })
 } 
 
