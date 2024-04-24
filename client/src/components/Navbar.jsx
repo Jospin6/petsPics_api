@@ -8,10 +8,14 @@ import { Link } from 'react-router-dom'
 export const Navbar = () => {
     return <div className="w-full h-[50px] border-b-[1px] flex 
             justify-between border-gray-300 fixed z-10 bg-white">
-        <div className="pl-4 flex items-center semi-bold">petsPics</div>
+        <div className="pl-4 flex items-center semi-bold">
+            <Link to="/user">
+                petsPics
+            </Link>
+        </div>
         <div className="flex items-center justify-between pr-[20px] w-[25%]">
             <div className='flex'>
-                <Link to="/home/newPet" className='mr-6'>
+                <Link to="/user/newPet" className='mr-6'>
                     <Image src={add} alt="Add pet icon" style="w-[25px] h-[25px]"/>
                 </Link>
                 <Link className='mr-6'>

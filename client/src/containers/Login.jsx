@@ -17,7 +17,7 @@ export const Login = () => {
     const submit = (data, { resetForm }) => {
         dispatch(userLogin(data))
         resetForm()
-        navigate("/home")
+        navigate("/user")
     }
 
     return <div className="w-full h-[100vh] flex items-center justify-center">
