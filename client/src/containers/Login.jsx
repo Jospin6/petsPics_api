@@ -55,7 +55,7 @@ export const Login = () => {
                     Forgot password
                 </Link>
             </div>
-            <SubmitFormBtn text="Login" />
+            <SubmitFormBtn text="Login" className="w-full" />
         </AuthFrame>
     </div>
 }

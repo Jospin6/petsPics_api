@@ -42,7 +42,7 @@ export const Signin = () => {
                 fieldName="password"
                 placeholder="Enter your password"
             />
-            <SubmitFormBtn text="Sign In" />
+            <SubmitFormBtn text="Sign In" className="w-full" />
         </AuthFrame>
     </div>
 }
