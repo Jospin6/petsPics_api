@@ -6,15 +6,6 @@ import { Button } from "./Button"
 
 export const AddPet = () => {
     return <div className="text-black">
-        <div className="w-full h-[200px] mt-4">
-            <div className="p-2 arial flex justify-between rounded-lg bg-white">
-                <span className="text-lg">Your pets</span>
-                <Button text="Post pet" className="bg-green-500" />
-            </div>
-            <div>
-                
-            </div>
-        </div>
         <div className="w-full h-[320px] rounded-lg bg-white mt-4 p-2">
             <div className="text-lg arial">Add new pet</div>
             <div>
@@ -48,6 +39,21 @@ export const AddPet = () => {
                         </div>
                     </Form>
                 </Formik>
+            </div>
+        </div>
+        <div className="w-full h-[250px] mt-4">
+            <div className="p-2 arial flex justify-between rounded-lg bg-white">
+                <span className="text-lg">Your pets</span>
+                <Button text="Post pet" className="bg-green-500" />
+            </div>
+            <div className="w-full">
+                <div className="w-[150px] h-[200px] mt-[5px] bg-white rounded-lg small-shadow">
+                    <div className="w-full h-[150px] bg-red-300 rounded-t-lg"></div>
+                    <div className="pl-2">
+                        <div>pet name</div>
+                        <div className="text-[12px] text-gray-500">12 years old</div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
