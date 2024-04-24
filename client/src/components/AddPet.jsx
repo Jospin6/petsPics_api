@@ -2,12 +2,18 @@ import { Form, Formik } from "formik"
 import { Input } from "./Input"
 import { Select } from "./Select"
 import { SubmitFormBtn } from './SubmitFormBtn'
+import { Button } from "./Button"
 
 export const AddPet = () => {
     return <div className="text-black">
-        <div className="w-full h-[200px] rounded-lg bg-white mt-4">
-            <div className="p-2">Your existing pets</div>
-            <div></div>
+        <div className="w-full h-[200px] mt-4">
+            <div className="p-2 arial flex justify-between rounded-lg bg-white">
+                <span className="text-lg">Your pets</span>
+                <Button text="Post pet" className="bg-green-500" />
+            </div>
+            <div>
+                
+            </div>
         </div>
         <div className="w-full h-[320px] rounded-lg bg-white mt-4 p-2">
             <div className="text-lg arial">Add new pet</div>
