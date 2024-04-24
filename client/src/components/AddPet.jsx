@@ -3,6 +3,7 @@ import { Input } from "./Input"
 import { Select } from "./Select"
 import { SubmitFormBtn } from './SubmitFormBtn'
 import { Button } from "./Button"
+import { MiniPetCard } from "./MiniPetCard"
 
 export const AddPet = () => {
     return <div className="text-black">
@@ -46,14 +47,8 @@ export const AddPet = () => {
                 <span className="text-lg">Your pets</span>
                 <Button text="Post pet" className="bg-green-500" />
             </div>
-            <div className="w-full">
-                <div className="w-[150px] h-[200px] mt-[5px] bg-white rounded-lg small-shadow">
-                    <div className="w-full h-[150px] bg-red-300 rounded-t-lg"></div>
-                    <div className="pl-2">
-                        <div>pet name</div>
-                        <div className="text-[12px] text-gray-500">12 years old</div>
-                    </div>
-                </div>
+            <div className="w-full flex">
+                <MiniPetCard/>
             </div>
         </div>
     </div>
