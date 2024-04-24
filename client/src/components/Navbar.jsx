@@ -11,7 +11,7 @@ export const Navbar = () => {
         <div className="pl-4 flex items-center semi-bold">petsPics</div>
         <div className="flex items-center justify-between pr-[20px] w-[25%]">
             <div className='flex'>
-                <Link className='mr-6'>
+                <Link to="/home/newPet" className='mr-6'>
                     <Image src={add} alt="Add pet icon" style="w-[25px] h-[25px]"/>
                 </Link>
                 <Link className='mr-6'>

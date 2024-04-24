@@ -1,4 +1,4 @@
-import { Image } from "../components/Image"
+import { Image } from "./Image"
 import pets from '../assets/images/pets.jpg'
 import hearts from '../assets/images/hearts.png'
 import speech from '../assets/images/speech.png'

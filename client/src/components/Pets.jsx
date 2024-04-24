@@ -1,4 +1,4 @@
-import { PostItem } from "../containers/PostItem"
+import { PostItem } from "./PostItem"
 
 export const Pets = () => {
     return <div>
