@@ -10,7 +10,9 @@ app.use(express.json())
 
 // Routes
 const userRouter = require("./routes/Users")
-app.use(userRouter),
+app.use(userRouter)
+const petRouter = require("./routes/Pets")
+app.use(petRouter)
 
 
 

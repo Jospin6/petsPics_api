@@ -5,10 +5,10 @@ const {
     getUsers,
     create,
     login
- } = require("../controllers/userController")
+} = require("../controllers/userController")
 
 
-router.get("/users", validateToken, getUsers)
+router.get("/users", getUsers)
 
 router.post("/users", create)
 
