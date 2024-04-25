@@ -10,8 +10,13 @@ const create = async (req, res) => {
     res.json("PET CREATED !")
 }
 
+const update = async (req, res) => {
+    
+}
+
 
 module.exports = {
     create,
-    index
+    index,
+    update
 }
