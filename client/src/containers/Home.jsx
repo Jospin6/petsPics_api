@@ -1,7 +1,7 @@
 import { Navbar } from '../components/Navbar';
 import { Route, Routes } from 'react-router-dom';
 import { Pets } from '../components/Pets';
-import { AddPet } from '../components/AddPet';
+import { CreatePet } from '../components/CreatePet';
 
 export const Home = () => {
 
@@ -11,7 +11,7 @@ export const Home = () => {
             <div className='w-[40%] m-auto min-h-[400px] h-auto'>
                 <Routes>
                     <Route path='/' element={<Pets/>} />
-                    <Route path='/newPet' element={<AddPet/>}/>
+                    <Route path='/newPet' element={<CreatePet/>}/>
                 </Routes>
             </div>
         </div>

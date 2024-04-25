@@ -2,7 +2,8 @@ import { Button } from "./Button"
 import { MiniPetCard } from "./MiniPetCard"
 import { NewPetForm } from "./NewPetForm"
 
-export const AddPet = () => {
+export const CreatePet = () => {
+
     return <div className="text-black">
         <div className="w-full h-[320px] rounded-lg bg-white mt-4 p-2">
             <div className="text-lg arial">Add new pet</div>
