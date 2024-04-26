@@ -10,6 +10,14 @@ const create = async (req, res) => {
     res.json("PET CREATED !")
 }
 
+const show = async (req, res) => {
+    const id = req.params.id
+    const pet = await Pet.findOne({
+        where: { id }
+    })
+    res.json(pet)
+}
+
 const update = async (req, res) => {
     
 }
@@ -18,5 +26,6 @@ const update = async (req, res) => {
 module.exports = {
     create,
     index,
-    update
+    update,
+    show
 }
