@@ -15,7 +15,12 @@ const show = async (req, res) => {
     res.json(post)
 }
 
+const update = async (req, res) => {
+
+}
+
 module.exports = {
     create,
-    show
+    show,
+    update
 }
