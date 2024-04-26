@@ -8,7 +8,7 @@ const {
 } = require("../controllers/userController")
 
 
-router.get("/users", getUsers)
+router.get("/users", validateToken, getUsers)
 
 router.post("/users", create)
 
