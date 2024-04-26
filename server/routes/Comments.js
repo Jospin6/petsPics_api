@@ -7,6 +7,4 @@ const {
 
 router.post("/comments", validateToken, create)
 
-module.exports = {
-
-}
+module.exports = router
