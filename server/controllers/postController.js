@@ -19,8 +19,13 @@ const update = async (req, res) => {
 
 }
 
+const remove = async (req, res) => {
+
+}
+
 module.exports = {
     create,
     show,
-    update
+    update,
+    remove
 }
