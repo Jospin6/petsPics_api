@@ -6,7 +6,7 @@ const {
     show
 } = require("../controllers/commentController")
 
-router.get("/comments/post_id", validateToken, show)
+router.get("/comments/:post_id", show)
 router.post("/comments", validateToken, create)
 
 module.exports = router
