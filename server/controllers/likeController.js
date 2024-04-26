@@ -6,8 +6,8 @@ const create = async (req, res) => {
 
     const found = await Like.findOne({
         where: {
-            post_id,
-            user_id: id
+            user_id: id,
+            post_id
         }
     })
     if (!found) {
@@ -16,8 +16,8 @@ const create = async (req, res) => {
     } else {
         await Like.destroy({
             where: {
-                post_id,
-                user_id: id
+                user_id: id,
+                post_id
             }
         })
         res.json("Unliked the post !")
