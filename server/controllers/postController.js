@@ -7,6 +7,15 @@ const create = async (req, res) => {
     res.json("Created post!")
 }
 
+const show = async (req, res) => {
+    const id = req.params.id
+    const post = await Post.findOne({
+        where: { id }
+    })
+    res.json(post)
+}
+
 module.exports = {
-    create
+    create,
+    show
 }
