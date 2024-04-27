@@ -1,6 +1,7 @@
 import { PostItem } from "./PostItem"
 import { Image } from './Image'
 import paper_plane from '../assets/images/paper_plane.png'
+import { CommentItem } from "./CommentItem"
 
 export const Comments = () => {
     return <div className="mt-2">
@@ -10,8 +11,9 @@ export const Comments = () => {
             rounded-lg pl-2 outline-none text-black" placeholder="Enter your comment"/>
             <Image src={paper_plane} alt="send" style="w-[25px] h-[25px] "/>
         </div>
-        <div className="bg-white rounded-lg mt-2 h-[200px] p-2">
-            comments
+        <div className="bg-white rounded-lg mt-2 h-auto">
+            <CommentItem/>
+            <CommentItem/>
         </div>
     </div>
 }
