@@ -2,6 +2,7 @@ import { Image } from "./Image"
 import pets from '../assets/images/pets.jpg'
 import hearts from '../assets/images/hearts.png'
 import speech from '../assets/images/speech.png'
+import { Link } from 'react-router-dom'
 
 export const PostItem = () => {
     return <div className="mt-2 bg-white h-auto rounded-lg w-[100%] small-shadow">
@@ -22,10 +23,12 @@ export const PostItem = () => {
                 src={hearts} 
                 alt="heart" 
                 style="w-[20px] h-[20px]"/>
-                <Image 
-                src={speech} 
-                alt="speech" 
-                style="w-[20px] h-[20px]"/>
+                <Link to="/user/comment">
+                    <Image 
+                    src={speech} 
+                    alt="speech" 
+                    style="w-[20px] h-[20px]"/>
+                </Link>
             </div>
         </div>
     </div>
