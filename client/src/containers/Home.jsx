@@ -1,20 +1,24 @@
-import { useDispatch, useSelector } from 'react-redux'
-import { getUsers, fetchUsers } from '../slices/userSlice'
-import { useEffect } from 'react'
+
+import { Navbar } from '../components/Navbar';
+import { Route, Routes } from 'react-router-dom';
+import { Pets } from '../components/Pets';
+import { CreatePet } from '../components/CreatePet';
+import { PostPet } from '../components/PostPet';
+import { Comments } from '../components/Comments';
 
 export const Home = () => {
-    const users = useSelector(getUsers)
-    const dispatch = useDispatch()
 
-    useEffect(() => {
-        dispatch(fetchUsers())
-    }, [dispatch])
-
-    return <div>
-        {
-            users.map(user => (
-                <div className='text-red-500' key={user.id}> {user.userName} </div>
-            ))
-        }
+    return <div className='min-h-[100vh] h-auto bg-gray-100'>
+        <Navbar />
+        <div className='pt-[50px] w-full pb-4'>
+            <div className='w-[40%] m-auto min-h-[400px] h-auto'>
+                <Routes>
+                    <Route path='/' element={<Pets/>} />
+                    <Route path='/newPet' element={<CreatePet/>}/>
+                    <Route path='/post' element={<PostPet/>}/>
+                    <Route path='/comment' element={<Comments/>}/>
+                </Routes>
+            </div>
+        </div>
     </div>
 }

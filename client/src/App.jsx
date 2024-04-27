@@ -1,11 +1,20 @@
-import { useState } from 'react'
+
+import { Login } from './containers/Login'
+import { Signin } from './containers/Signin'
 import { Home } from './containers/Home'
+import { Routes, Route } from 'react-router-dom';
+
 
 function App() {
 
   return (
     <>
-      <Home/>
+      <Routes>
+          <Route exact path="/" element={<Login/>} />
+          <Route path="/registration" element={<Signin/>} />
+          <Route path="user/*" element={<Home/>} />
+      </Routes>
+
     </>
   )
 }

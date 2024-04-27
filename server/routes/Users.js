@@ -1,18 +1,22 @@
 const express = require("express")
 const router = new express.Router()
-const { User } = require("../models")
+
+const {validateToken} = require("../middlewares/authMiddleware")
+const { 
+    getUsers,
+    create,
+    show,
+    login
+} = require("../controllers/userController")
 
 
-router.get("/users", async (req, res) => {
-    const getusers = await User.findAll()
-    res.json(getusers)
-})
+router.get("/users", validateToken, getUsers)
 
-router.post("/users", async (req, res) => {
-    const user = req.body
-    await User.create(user)
-    res.json(user)
-})
+router.post("/users", create)
+router.get("/users/:id", show)
+
+router.post("/users/login", login)
+
 
 
 module.exports = router
