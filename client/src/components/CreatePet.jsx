@@ -1,6 +1,7 @@
 import { Button } from "./Button"
 import { MiniPetCard } from "./MiniPetCard"
 import { NewPetForm } from "./NewPetForm"
+import { Link } from 'react-router-dom'
 
 export const CreatePet = () => {
 
@@ -12,7 +13,7 @@ export const CreatePet = () => {
         <div className="w-full h-[250px] mt-4">
             <div className="p-2 arial flex justify-between rounded-lg bg-white">
                 <span className="text-lg">Your pets</span>
-                <Link to="/post">
+                <Link to="/user/post">
                     <Button text="Post pet" className="bg-green-500" />
                 </Link>
             </div>
