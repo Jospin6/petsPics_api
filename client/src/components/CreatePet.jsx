@@ -12,7 +12,9 @@ export const CreatePet = () => {
         <div className="w-full h-[250px] mt-4">
             <div className="p-2 arial flex justify-between rounded-lg bg-white">
                 <span className="text-lg">Your pets</span>
-                <Button text="Post pet" className="bg-green-500" />
+                <Link to="/post">
+                    <Button text="Post pet" className="bg-green-500" />
+                </Link>
             </div>
             <div className="w-full flex">
                 <MiniPetCard/>

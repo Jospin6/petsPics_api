@@ -2,6 +2,7 @@ import { Navbar } from '../components/Navbar';
 import { Route, Routes } from 'react-router-dom';
 import { Pets } from '../components/Pets';
 import { CreatePet } from '../components/CreatePet';
+import { PostPet } from '../components/PostPet';
 
 export const Home = () => {
 
@@ -12,6 +13,7 @@ export const Home = () => {
                 <Routes>
                     <Route path='/' element={<Pets/>} />
                     <Route path='/newPet' element={<CreatePet/>}/>
+                    <Route path='/post' element={<PostPet/>}/>
                 </Routes>
             </div>
         </div>
