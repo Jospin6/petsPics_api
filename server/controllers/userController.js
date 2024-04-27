@@ -21,6 +21,14 @@ const create = async (req, res) => {
     })
 }
 
+const show = async (req, res) => {
+    const id = req.params.id
+    const user = await User.findOne({
+        where: { id }
+    })
+    res.json(user)
+}
+
 const login = async (req, res) => {
     const { userName, password, checked } = req.body
     const user = await User.findOne({ where: { userName: userName } })
@@ -39,5 +47,6 @@ const login = async (req, res) => {
 module.exports = {
     getUsers,
     create,
+    show,
     login
 }

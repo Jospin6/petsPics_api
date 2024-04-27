@@ -2,7 +2,7 @@ import { Input } from '../components/Input'
 import { SubmitFormBtn } from '../components/SubmitFormBtn'
 import { Checkbox } from '../components/Checkbox'
 import { Link, useNavigate } from 'react-router-dom'
-import { FormFrame } from '../components/FormFrame'
+import { AuthFrame } from '../components/AuthFrame'
 import {initialValues, validationSchema} from '../helpers/userHelper'
 import { userLogin } from '../slices/user/userApi'
 import { useDispatch } from 'react-redux'
@@ -17,11 +17,11 @@ export const Login = () => {
     const submit = (data, { resetForm }) => {
         dispatch(userLogin(data))
         resetForm()
-        navigate("/home")
+        navigate("/user")
     }
 
     return <div className="w-full h-[100vh] flex items-center justify-center">
-        <FormFrame
+        <AuthFrame
             formTitle="Login to petsPics"
             formDescription="Lorem ipsum dolor sit amet consectetur adipisicing elit. At soluta 
             unde sint qui, quis aut illo vitae velit."
@@ -55,7 +55,7 @@ export const Login = () => {
                     Forgot password
                 </Link>
             </div>
-            <SubmitFormBtn text="Login" />
-        </FormFrame>
+            <SubmitFormBtn text="Login" className="w-full" />
+        </AuthFrame>
     </div>
 }

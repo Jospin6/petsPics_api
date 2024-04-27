@@ -10,6 +10,12 @@
     .shadow {
         box-shadow: 0 0 25px rgba(0, 0, 0, 0.3);
     }
+    .small-shadow {
+        box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+    }
+    .blackBgWithOpacity {
+        background-color: rgba(0, 0, 0, 0.5);
+    }
     .semi-bold {
         font-weight: 500;
     }

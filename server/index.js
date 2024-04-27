@@ -10,7 +10,15 @@ app.use(express.json())
 
 // Routes
 const userRouter = require("./routes/Users")
-app.use(userRouter),
+app.use(userRouter)
+const petRouter = require("./routes/Pets")
+app.use(petRouter)
+const postRouter = require("./routes/Posts")
+app.use(postRouter)
+const commentRouter = require("./routes/Comments")
+app.use(commentRouter)
+const likeRouter = require("./routes/Likes")
+app.use(likeRouter)
 
 
 

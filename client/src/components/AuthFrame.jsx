@@ -3,7 +3,7 @@ import cat from '../assets/images/cat.jpg'
 import { Image } from './Image'
 import { Formik, Form } from 'formik'
 
-export const FormFrame = (props) => {
+export const AuthFrame = (props) => {
     const {
         formTitle, 
         formDescription,
