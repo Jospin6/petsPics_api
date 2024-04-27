@@ -3,6 +3,7 @@ import { Route, Routes } from 'react-router-dom';
 import { Pets } from '../components/Pets';
 import { CreatePet } from '../components/CreatePet';
 import { PostPet } from '../components/PostPet';
+import { Comments } from '../components/Comments';
 
 export const Home = () => {
 
@@ -14,6 +15,7 @@ export const Home = () => {
                     <Route path='/' element={<Pets/>} />
                     <Route path='/newPet' element={<CreatePet/>}/>
                     <Route path='/post' element={<PostPet/>}/>
+                    <Route path='/comment' element={<Comments/>}/>
                 </Routes>
             </div>
         </div>
