@@ -4,7 +4,7 @@ import hearts from '../assets/images/hearts.png'
 import speech from '../assets/images/speech.png'
 import { Link } from 'react-router-dom'
 
-export const PostItem = () => {
+export const PostItem = ({showCommentIcon}) => {
     return <div className="mt-2 bg-white h-auto rounded-lg w-[100%] small-shadow">
         <div className="w-[100%]">
             <Image 
@@ -23,7 +23,7 @@ export const PostItem = () => {
                 src={hearts} 
                 alt="heart" 
                 style="w-[20px] h-[20px]"/>
-                <Link to="/user/comment">
+                <Link to="/user/comment" className={showCommentIcon}>
                     <Image 
                     src={speech} 
                     alt="speech" 
