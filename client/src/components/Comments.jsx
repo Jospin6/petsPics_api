@@ -13,7 +13,6 @@ export const Comments = () => {
         </div>
         <div className="bg-white rounded-lg mt-2 h-auto">
             <CommentItem/>
-            <CommentItem/>
         </div>
     </div>
 }
