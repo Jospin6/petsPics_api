@@ -1,6 +1,7 @@
+import { PostItem } from "./PostItem"
 
 export const Likes = () => {
     return <div>
-        Your likes
+        <PostItem/>
     </div>
 }
