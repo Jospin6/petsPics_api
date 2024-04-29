@@ -5,6 +5,7 @@ import { CreatePet } from '../components/CreatePet';
 import { PostPet } from '../components/PostPet';
 import { Comments } from '../components/Comments';
 import { Likes } from '../components/Likes';
+import { UserAccount } from '../components/UserAccount';
 
 export const Home = () => {
 
@@ -18,6 +19,7 @@ export const Home = () => {
                     <Route path='/post' element={<PostPet/>}/>
                     <Route path='/comment' element={<Comments/>}/>
                     <Route path='/likes' element={<Likes/>}/>
+                    <Route path='/account' element={<UserAccount/>}/>
                 </Routes>
             </div>
         </div>

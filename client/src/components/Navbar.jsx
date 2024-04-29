@@ -21,7 +21,7 @@ export const Navbar = () => {
                 <Link to="/user/likes" className='mr-6'>
                     <Image src={hearts} alt="Likes" style="w-[25px] h-[25px]"/>
                 </Link>
-                <Link className='mr-2'>
+                <Link to="/user/account" className='mr-2'>
                     <Image src={male_user} alt="User profil" style="w-[25px] h-[25px]"/>
                 </Link>
             </div>
