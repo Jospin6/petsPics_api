@@ -24,6 +24,10 @@ const create = async (req, res) => {
     }
 }
 
+const getUserLikes = async (req, res) => {
+    
+}
+
 module.exports = {
     create
 }
