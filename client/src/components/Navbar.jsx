@@ -18,7 +18,7 @@ export const Navbar = () => {
                 <Link to="/user/newPet" className='mr-6'>
                     <Image src={add} alt="Add pet icon" style="w-[25px] h-[25px]"/>
                 </Link>
-                <Link className='mr-6'>
+                <Link to="/user/likes" className='mr-6'>
                     <Image src={hearts} alt="Likes" style="w-[25px] h-[25px]"/>
                 </Link>
                 <Link className='mr-2'>
