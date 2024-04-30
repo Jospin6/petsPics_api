@@ -1,6 +1,7 @@
 import { Formik, Form } from 'formik'
 import { Input } from './Input'
 import { SubmitFormBtn } from './SubmitFormBtn'
+import { ChangePassword } from './ChangePassword'
 
 export const UserInfo = () => {
     return <div>
@@ -29,27 +30,7 @@ export const UserInfo = () => {
             <div className="semi-bold text-[18px]">
                 Change your password
             </div>
-            <Formik>
-                <Form>
-                    <Input
-                        labelText="Old password"
-                        id="password"
-                        type="password"
-                        fieldName="password"
-                        placeholder="Enter your old password"
-                    />
-                    <Input
-                        labelText="New password"
-                        id="newpassword"
-                        type="password"
-                        fieldName="newpassword"
-                        placeholder="Enter your new password"
-                    />
-                    <div className='flex justify-end'>
-                        <SubmitFormBtn text="Change password" className="w-[150px]" />
-                    </div>
-                </Form>
-            </Formik>
+            <ChangePassword/>
         </div>
     </div>
 }
