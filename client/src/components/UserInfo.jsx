@@ -26,7 +26,30 @@ export const UserInfo = () => {
             </div>
         </div>
         <div className="bg-white rounded-lg min-h-[150px] mt-2 p-2">
-            
+            <div className="semi-bold text-[18px]">
+                Change your password
+            </div>
+            <Formik>
+                <Form>
+                    <Input
+                        labelText="Old password"
+                        id="password"
+                        type="password"
+                        fieldName="password"
+                        placeholder="Enter your old password"
+                    />
+                    <Input
+                        labelText="New password"
+                        id="newpassword"
+                        type="password"
+                        fieldName="newpassword"
+                        placeholder="Enter your new password"
+                    />
+                    <div className='flex justify-end'>
+                        <SubmitFormBtn text="Change password" className="w-[150px]" />
+                    </div>
+                </Form>
+            </Formik>
         </div>
     </div>
 }
