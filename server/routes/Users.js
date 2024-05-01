@@ -1,5 +1,6 @@
 const express = require("express")
 const router = new express.Router()
+
 const {validateToken} = require("../middlewares/authMiddleware")
 const { 
     getUsers,
@@ -15,6 +16,7 @@ router.post("/users", create)
 router.get("/users/:id", show)
 
 router.post("/users/login", login)
+
 
 
 module.exports = router
