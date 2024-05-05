@@ -1,5 +1,10 @@
 const { Post } = require("../models")
 
+const index = async (req, res) => {
+    const posts = await Post.findAll()
+    res.json(posts)
+}
+
 const create = async (req, res) => {
     const { pet_id, content } = req.body
     const { id } = req.user
@@ -24,6 +29,7 @@ const remove = async (req, res) => {
 }
 
 module.exports = {
+    index,
     create,
     show,
     update,
