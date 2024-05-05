@@ -1,38 +1,41 @@
 
 const handleDate = (dateTme) => {
-    let devidDate = dateTme.split("T")
-    const date = devidDate[0]
-    const time = devidDate[1].slice(0,5)
+    const date = getDate(dateTme)
+    const time = dateTme.split("T")[1].slice(0,5)
     let fullDate = ''
     if (date === gettodayDate()) {
-        fullDate = 'today'.concat(". at ").concat(time)
+        fullDate = 'today'.concat(" ").concat(time)
     } else if (date === getYesterdayDate()) {
-        fullDate = 'yesterday'.concat(". at ").concat(time)
+        fullDate = 'yesterday'.concat(" ").concat(time)
     } else {
-        fullDate = date.concat(". at ").concat(time)
+        fullDate = date.concat(" ").concat(time)
     }
     return fullDate
 }
 
+const getDate = date => {
+    const format = new Date(date)
+    return dateFormat(format)
+}
+
 const gettodayDate = () => {
     const today = new Date()
-    return today.getFullYear
-        .concat("-")
-        .concat(today.getMonth + 1)
-        .concat("-")
-        .concat(today.getDate())
+    return dateFormat(today)
 }
 
 const getYesterdayDate = () => {
     const today = new Date()
     const yeterday = new Date(today.getTime() - (24 * 60 * 60 * 1000))
-
-    return yeterday.getFullYear
-        .concat("-")
-        .concat(yeterday.getMonth + 1)
-        .concat("-")
-        .concat(yeterday.getDate())
+    return dateFormat(yeterday)
 }
+
+const dateFormat = date => {
+    return date.getDate() 
+        + "/" + correctMonth(date.getMonth()) 
+        + "/" + date.getFullYear()
+}
+
+const correctMonth = month => month + 1
 
 const getPets = state => state.pet.pets
 const getPosts = state => state.post.posts
