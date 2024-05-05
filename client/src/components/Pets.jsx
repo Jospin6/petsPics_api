@@ -1,20 +1,20 @@
 import { PostItem } from "./PostItem"
 import { useDispatch, useSelector } from 'react-redux'
-import { getPets } from '../helpers/petHelper'
-import { fetchPets } from '../slices/pets/petApi'
+import { getPosts } from '../helpers/petHelper'
+import { fetchPosts } from '../slices/posts/postApi'
 import { useEffect } from "react"
 
 export const Pets = () => {
-    const pets = useSelector(getPets)
+    const posts = useSelector(getPosts)
     const dispatch = useDispatch()
     
     useEffect(() => {
-        dispatch(fetchPets())
+        dispatch(fetchPosts())
     }, [dispatch])
 
     return <div>
         {
-            pets.map(pet => (<PostItem pet={pet} key={pet.id}/>))
+            posts.map(pet => (<PostItem pet={pet} key={pet.id}/>))
         }
     </div>
 }
