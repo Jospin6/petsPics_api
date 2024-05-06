@@ -4,12 +4,14 @@ const {validateToken} = require("../middlewares/authMiddleware")
 const { 
     create,
     index,
-    show
+    show,
+    userPets
 } = require("../controllers/petController")
 
 router.get("/pets", index)
 router.post("/pets", validateToken, create)
 router.get("/pets/:id", show)
+router.get("/pets/me/:user_id", validateToken, userPets)
 
 
 
