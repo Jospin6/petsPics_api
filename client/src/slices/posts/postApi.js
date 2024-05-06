@@ -7,3 +7,11 @@ export const fetchPosts = createAsyncThunk('post/fetchPosts', async () => {
         .then(reponse => reponse.data)
         .catch(error => error.message)
 })
+
+export const createPost = createAsyncThunk("post/createPost", async (data) => {
+    return await axios.post("http://localhost:3001/post", data, {
+        headers: {
+            accessToken: localStorage.getItem("accessToken")
+        }
+    })
+})
