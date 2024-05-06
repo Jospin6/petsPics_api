@@ -20,7 +20,7 @@ const show = async (req, res) => {
 }
 
 const userPets = async (req, res) => {
-    const {id} = req.user
+    const { id } = req.user
     const pets = await Pet.findAll({
         where: {
             user_id: id

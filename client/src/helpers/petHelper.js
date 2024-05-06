@@ -39,9 +39,10 @@ const correctMonth = month => month + 1
 
 const getPets = state => state.pet.pets
 const getPosts = state => state.post.posts
-
+const getUserPets = state => state.userPet.pets
 export {
     getPets,
     getPosts,
-    handleDate
+    handleDate,
+    getUserPets
 }
