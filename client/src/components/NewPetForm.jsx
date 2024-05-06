@@ -2,9 +2,39 @@ import { Form, Formik } from "formik"
 import { Input } from "./Input"
 import { Select } from "./Select"
 import { SubmitFormBtn } from './SubmitFormBtn'
+import * as Yup from 'yup'
+import { createPet } from '../slices/pets/petApi'
+import { useDispatch } from 'react-redux'
+import { useNavigate } from "react-router-dom"
 
 export const NewPetForm = () => {
-    return <Formik>
+    const dispatch = useDispatch()
+    const navigate = useNavigate()
+    const initialValues = {
+        petName: "",
+        species: "",
+        breed: "",
+        age: ""
+    
+    }
+    
+    const validationSchema = Yup.object({
+        petName: Yup.string().required(),
+        species: Yup.string().required(),
+        breed: Yup.string().required(),
+        age: Yup.string().required()
+    })
+    
+    const submit = (data, { resetForm }) => {
+        dispatch(createPet(data))
+        resetForm()
+        navigate("/user")
+    }
+
+    return <Formik 
+        initialValues={initialValues} 
+        validationSchema={validationSchema}
+        onSubmit={submit}>
         <Form>
             <Input
                 labelText="Pet name"
@@ -15,7 +45,7 @@ export const NewPetForm = () => {
             <div className="grid grid-cols-4 gap-4">
                 <Select
                     labelText="Species"
-                    fieldName="petSpecy"
+                    fieldName="species"
                     id="petSpecy"
                     className="col-span-2">
                     <option value="">Choose a specie</option>
@@ -25,7 +55,7 @@ export const NewPetForm = () => {
                 </Select>
                 <Select
                     labelText="Breed"
-                    fieldName="petBreed"
+                    fieldName="breed"
                     id="petBreed"
                     className="col-span-2">
                     <option value="">Select a pet breed</option>
