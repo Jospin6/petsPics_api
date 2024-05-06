@@ -6,7 +6,8 @@ const index = async (req, res) => {
 }
 
 const create = async (req, res) => {
-    Pet.create(req.body)
+    const { id } = req.user
+    Pet.create({...req.body, user_id: id})
     res.json("PET CREATED !")
 }
 
@@ -18,6 +19,16 @@ const show = async (req, res) => {
     res.json(pet)
 }
 
+const userPets = async (req, res) => {
+    const { id } = req.user
+    const pets = await Pet.findAll({
+        where: {
+            user_id: id
+        }
+    })
+    res.json(pets)
+}
+
 const update = async (req, res) => {
     
 }
@@ -27,5 +38,6 @@ module.exports = {
     create,
     index,
     update,
-    show
+    show,
+    userPets
 }

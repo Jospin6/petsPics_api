@@ -40,7 +40,10 @@ export const AuthFrame = (props) => {
             </div>
         </div>
         <div className="col-span-4 f-full">
-            <Image src={cat} alt="cat" style="w-full h-[500px] rounded-r-lg object-cover" />
+            <Image 
+                src={cat} 
+                alt="cat" 
+                style="w-full h-[500px] rounded-r-lg object-cover" />
         </div>
 </div>
 }

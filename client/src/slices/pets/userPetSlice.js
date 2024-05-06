@@ -1,25 +1,25 @@
 import { createSlice } from '@reduxjs/toolkit'
-import { fetchPets } from './petApi'
+import { fetchUserPets } from './petApi'
 
 const initialState = {
-    loading: false,
+    loading: "",
     pets: [],
     error: ""
 }
 
-const petSlice = createSlice({
-    name: "pet",
+const userPetSlice = createSlice({
+    name: "userPet",
     initialState,
     extraReducers: (builder) => {
-        builder.addCase(fetchPets.pending, (state) => {
+        builder.addCase(fetchUserPets.pending, (state) => {
             state.loading = true
         })
-        builder.addCase(fetchPets.fulfilled, (state, action) => {
+        builder.addCase(fetchUserPets.fulfilled, (state, action) => {
             state.loading = false
             state.pets = action.payload
             state.error = ""
         })
-        builder.addCase(fetchPets.rejected, (state, action) => {
+        builder.addCase(fetchUserPets.rejected, (state, action) => {
             state.loading = false
             state.pets = []
             state.error = action.payload
@@ -27,5 +27,4 @@ const petSlice = createSlice({
     }
 })
 
-
-export default petSlice.reducer
+export default userPetSlice.reducer
