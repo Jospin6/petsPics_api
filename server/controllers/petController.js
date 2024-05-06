@@ -6,7 +6,8 @@ const index = async (req, res) => {
 }
 
 const create = async (req, res) => {
-    Pet.create(req.body)
+    const { id } = req.user
+    Pet.create({...req.body, user_id: id})
     res.json("PET CREATED !")
 }
 

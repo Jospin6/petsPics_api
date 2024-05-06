@@ -3,7 +3,11 @@ import axios from 'axios'
 
 
 export const createPet = createAsyncThunk("pet/createPet", async (data) => {
-    return await axios.post("http://localhost:3001/pets", data)
+    return await axios.post("http://localhost:3001/pets", data, {
+        headers: {
+            accessToken: localStorage.getItem("accessToken")
+        }
+    })
     .then(response => {
         console.log(response.data)
     })
