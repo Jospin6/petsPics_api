@@ -18,3 +18,11 @@ export const fetchPets = createAsyncThunk("pet/fetchPets", async () => {
         .then(response => response.data)
         .catch(error => error.message)
 })
+
+export const fetchUserPets = createAsyncThunk("pet/fetchUserPets", async () => {
+    return await axios.get("http://localhost:3001/pets/me", {
+        headers: {
+            accessToken: localStorage.getItem("accessToken")
+        }
+    })
+})
