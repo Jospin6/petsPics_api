@@ -6,20 +6,43 @@ import { fetchUserPets } from '../slices/pets/petApi'
 import { useDispatch, useSelector } from 'react-redux'
 import { useEffect } from "react"
 import { getUserPets } from '../helpers/petHelper'
+import * as Yup from 'yup'
+import { useNavigate } from "react-router-dom"
+import { createPost } from '../slices/posts/postApi'
 
 export const PostForm = () => {
     const getPets = useSelector(getUserPets)
     const dispatch = useDispatch()
+    const navigate = useNavigate()
+
+    const initialValues = {
+        pet_id: "",
+        content: ""
+    }
+
+    const validationSchema = Yup.object({
+        pet_id: Yup.number().required(),
+        content: Yup.string().required()
+    })
 
     useEffect(()  => {
         dispatch(fetchUserPets())
     }, [dispatch])
 
-    return <Formik>
+    const submit = (data, { resetForm }) => {
+        dispatch(createPost(data))
+        resetForm()
+        navigate("/user")
+    }
+
+    return <Formik 
+        initialValues={initialValues} 
+        validationSchema={validationSchema}
+        onSubmit={submit}>
         <Form>
             <Select
                 labelText="Choose a pet"
-                fieldName="pet"
+                fieldName="pet_id"
                 id="pet"> 
                 <option value="">Select a pet</option>
                 {
@@ -31,7 +54,7 @@ export const PostForm = () => {
             <Input
                 labelText="Description"
                 id="description"
-                fieldName="description"
+                fieldName="content"
                 type="text"
                 placeholder="Write text here" />
             <div className="flex justify-end">
