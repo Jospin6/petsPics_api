@@ -17,12 +17,34 @@ export const NewPetForm = () => {
                     labelText="Species"
                     fieldName="petSpecy"
                     id="petSpecy"
-                    className="col-span-2" />
+                    className="col-span-2">
+                    <option value="">Choose a specie</option>
+                    <option value="Dog">Dog</option>
+                    <option value="Cat">Cat</option>
+                    <option value="Fish">Fish</option>
+                </Select>
                 <Select
                     labelText="Breed"
                     fieldName="petBreed"
                     id="petBreed"
-                    className="col-span-2" />
+                    className="col-span-2">
+                    <option value="">Select a pet breed</option>
+                    <optgroup label="Dog" className="text-gray-600">
+                        <option value="Bulldog">Bulldog</option>
+                        <option value="Beagle">Beagle</option>
+                        <option value="Poodle">Poodle</option>
+                    </optgroup>
+                    <optgroup label="Cat" className="text-gray-600">
+                        <option value="Maine coon">Maine coon</option>
+                        <option value="Persan">Persan</option>
+                        <option value="Bengal">Bengal</option>
+                    </optgroup>
+                    <optgroup label="Fish" className="text-gray-600">
+                        <option value="Guppy">Guppy</option>
+                        <option value="Molly">Molly</option>
+                        <option value="Bengal">Goldfish</option>
+                    </optgroup>
+                </Select>
             </div>
             <Input
                 labelText="Birthday"
