@@ -5,13 +5,13 @@ import speech from '../assets/images/speech.png'
 import { Link } from 'react-router-dom'
 import { handleDate } from '../helpers/petHelper'
 
-export const PostItem = ({showCommentIcon, pet}) => {
+export const PostItem = ({ showCommentIcon, pet }) => {
     return <div className="mt-2 bg-white h-auto rounded-lg w-[100%] small-shadow">
         <div className="w-[100%]">
-            <Image 
-                src={pets} 
-                alt="pet image" 
-                style="w-[100%] rounded-t-lg  h-[300px]"/>
+            <Image
+                src={pets}
+                alt="pet image"
+                style="w-[100%] rounded-t-lg  h-[300px]" />
         </div>
         <div className="py-[5px] px-[10px]">
             <div className="flex justify-between">
@@ -20,17 +20,20 @@ export const PostItem = ({showCommentIcon, pet}) => {
             </div>
             <div className="text-[14px] text-gray-500"> {pet.content} </div>
             <div className="flex justify-between">
-                <button>
-                    <Image 
-                    src={hearts} 
-                    alt="heart" 
-                    style="w-[20px] h-[20px]"/>
-                </button>
+                <div>
+                    <button>
+                        <Image
+                            src={hearts}
+                            alt="heart"
+                            style="w-[20px] h-[20px]" />
+                    </button>
+                    <span> { pet.likes.length } </span>
+                </div>
                 <Link to="/user/comment" className={showCommentIcon}>
-                    <Image 
-                    src={speech} 
-                    alt="speech" 
-                    style="w-[20px] h-[20px]"/>
+                    <Image
+                        src={speech}
+                        alt="speech"
+                        style="w-[20px] h-[20px]" />
                 </Link>
             </div>
         </div>

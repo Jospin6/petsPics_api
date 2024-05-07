@@ -6,12 +6,12 @@ const create = async (req, res) => {
 
     const found = await Like.findOne({
         where: {
-            user_id: id,
-            post_id
+            PostId: post_id,
+            UserId: id
         }
     })
     if (!found) {
-        await Like.create({ post_id, user_id: id })
+        await Like.create({ PostId: post_id, UserId: id })
         res.json("Liked the post !")
     } else {
         await Like.destroy({
