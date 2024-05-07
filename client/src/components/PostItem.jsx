@@ -20,10 +20,12 @@ export const PostItem = ({showCommentIcon, pet}) => {
             </div>
             <div className="text-[14px] text-gray-500"> {pet.content} </div>
             <div className="flex justify-between">
-                <Image 
-                src={hearts} 
-                alt="heart" 
-                style="w-[20px] h-[20px]"/>
+                <button>
+                    <Image 
+                    src={hearts} 
+                    alt="heart" 
+                    style="w-[20px] h-[20px]"/>
+                </button>
                 <Link to="/user/comment" className={showCommentIcon}>
                     <Image 
                     src={speech} 
