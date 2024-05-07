@@ -1,7 +1,7 @@
-const { Post } = require("../models")
+const { Post, Like } = require("../models")
 
 const index = async (req, res) => {
-    const posts = await Post.findAll()
+    const posts = await Post.findAll({ include: [Like] })
     res.json(posts)
 }
 
