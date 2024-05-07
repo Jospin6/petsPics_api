@@ -15,3 +15,11 @@ export const createPost = createAsyncThunk("post/createPost", async (data) => {
         }
     })
 })
+
+export const createLike = createAsyncThunk("post/createLike", async (data) => {
+    return await axios.post("http://localhost:3001/like", data, {
+        headers: {
+            accessToken: localStorage.getItem("accessToken")
+        }
+    })
+})

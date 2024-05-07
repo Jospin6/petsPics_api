@@ -1,23 +1,23 @@
 const { Like } = require("../models")
 
 const create = async (req, res) => {
-    const { post_id } = req.body
+    const { PostId } = req.body
     const { id } = req.user
 
     const found = await Like.findOne({
         where: {
-            PostId: post_id,
+            PostId,
             UserId: id
         }
     })
     if (!found) {
-        await Like.create({ PostId: post_id, UserId: id })
+        await Like.create({ PostId, UserId: id })
         res.json("Liked the post !")
     } else {
         await Like.destroy({
             where: {
-                user_id: id,
-                post_id
+                PostId,
+                UserId: id,
             }
         })
         res.json("Unliked the post !")
