@@ -4,8 +4,14 @@ import hearts from '../assets/images/hearts.png'
 import speech from '../assets/images/speech.png'
 import { Link } from 'react-router-dom'
 import { handleDate } from '../helpers/petHelper'
+import {createLike} from '../slices/posts/postApi'
+import { useDispatch } from 'react-redux'
 
 export const PostItem = ({ showCommentIcon, pet }) => {
+    const dispatch = useDispatch()
+
+    const handleLike = () => dispatch(createLike({PostId: pet.id}))
+
     return <div className="mt-2 bg-white h-auto rounded-lg w-[100%] small-shadow">
         <div className="w-[100%]">
             <Image
@@ -21,7 +27,7 @@ export const PostItem = ({ showCommentIcon, pet }) => {
             <div className="text-[14px] text-gray-500"> {pet.content} </div>
             <div className="flex justify-between">
                 <div className="flex items-center">
-                    <button>
+                    <button onClick={handleLike}>
                         <Image
                             src={hearts}
                             alt="heart"
