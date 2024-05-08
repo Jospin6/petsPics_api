@@ -1,7 +1,7 @@
 
 const handleDate = (dateTme) => {
     const date = getDate(dateTme)
-    const time = dateTme.split("T")[1].slice(0,5)
+    const time = getTime(dateTme)
     let fullDate = ''
     if (date === gettodayDate()) {
         fullDate = 'today'.concat(" ").concat(time)
@@ -16,6 +16,21 @@ const handleDate = (dateTme) => {
 const getDate = date => {
     const format = new Date(date)
     return dateFormat(format)
+}
+
+const getTime = date => {
+    const currentTime = new Date(date)
+    return currentTime.getHours() + ":" + currentTime.getMinutes() + " " + getTimeOfDay(date)
+}
+
+const getTimeOfDay = dateString => {
+    const date = new Date(dateString)
+    const hours = date.getHours()
+    if (hours < 12) {
+        return "AM"
+    } else {
+        return "PM"
+    }
 }
 
 const gettodayDate = () => {
@@ -40,9 +55,11 @@ const correctMonth = month => month + 1
 const getPets = state => state.pet.pets
 const getPosts = state => state.post.posts
 const getUserPets = state => state.userPet.pets
+const getSinglePost = state => state.singlePost.post
 export {
     getPets,
     getPosts,
     handleDate,
-    getUserPets
+    getUserPets,
+    getSinglePost
 }

@@ -11,11 +11,14 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
+      Like.belongsTo(models.Post, {
+        onDelete: 'CASCADE'
+      })
     }
   }
   Like.init({
-    post_id: DataTypes.INTEGER,
-    user_id: DataTypes.INTEGER,
+    PostId: DataTypes.INTEGER,
+    UserId: DataTypes.INTEGER,
   }, {
     sequelize,
     modelName: 'Like',
