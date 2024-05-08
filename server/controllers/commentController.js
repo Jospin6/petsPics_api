@@ -11,7 +11,7 @@ const show = async (req, res) => {
     const PostId = req.params.post_id
     const comments = await Comment.findAll({
         where: {
-            PostId: PostId
+            PostId
         }
     })
     res.json(comments)

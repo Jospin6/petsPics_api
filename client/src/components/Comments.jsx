@@ -12,10 +12,9 @@ export const Comments = () => {
     const { id } = useParams()
     const comments = useSelector(getComments)
     const dispatch = useDispatch()
-    console.log(comments)
 
     useEffect(() => {
-        dispatch(fetchPostComments({post_id: id}))
+        dispatch(fetchPostComments(id))
     }, [dispatch])
 
     return <div className="mt-2">
@@ -27,7 +26,7 @@ export const Comments = () => {
         </div>
         <div className="bg-white rounded-lg mt-2 h-auto">
             {
-                // comments.map(comment => (<CommentItem key={comment.id}/>))
+                comments.map(comment => (<CommentItem comment={comment} key={comment.id}/>))
             }
         </div>
     </div>
