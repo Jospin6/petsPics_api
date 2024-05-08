@@ -19,7 +19,7 @@ export const Home = () => {
                     <Route path='/' element={<Pets/>} />
                     <Route path='/newPet' element={<CreatePet/>}/>
                     <Route path='/post' element={<PostPet/>}/>
-                    <Route path='/comment' element={<Comments/>}/>
+                    <Route path='/comment/:id' element={<Comments/>}/>
                     <Route path='/likes' element={<Likes/>}/>
                     <Route path='/account' element={<UserAccount/>}/>
                     <Route path='/infos' element={<UserInfo/>}/>
