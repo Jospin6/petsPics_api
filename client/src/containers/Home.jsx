@@ -11,7 +11,7 @@ import { UserInfo } from '../components/UserInfo';
 
 export const Home = () => {
 
-    return <div className='min-h-[100vh] h-auto bg-gray-100'>
+    return <div className='min-h-[100vh] h-auto bg-[#FCFCFC]'>
         <Navbar />
         <div className='pt-[50px] w-full pb-4'>
             <div className='w-[40%] m-auto min-h-[400px] h-auto'>
