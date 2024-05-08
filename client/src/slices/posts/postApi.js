@@ -8,6 +8,16 @@ export const fetchPosts = createAsyncThunk('post/fetchPosts', async () => {
         .catch(error => error.message)
 })
 
+export const fetchSinglePost = createAsyncThunk("singlePost/fetchSinglePost", async (id) => {
+    return await axios.get(`http://localhost:3001/post/${id}`, {
+        headers: {
+            accessToken: localStorage.getItem("accessToken")
+        }
+    })
+        .then(reponse => reponse.data)
+        .catch(error => error.message)
+})
+
 export const createPost = createAsyncThunk("post/createPost", async (data) => {
     return await axios.post("http://localhost:3001/post", data, {
         headers: {
