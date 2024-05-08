@@ -1,4 +1,4 @@
-const { Comment } = require("../models")
+const { Comment, User } = require("../models")
 
 const create = async (req, res) => {
     const {post_id, content} = req.body
@@ -12,7 +12,8 @@ const show = async (req, res) => {
     const comments = await Comment.findAll({
         where: {
             PostId
-        }
+        },
+        include: [{model: User, as: 'User'}]
     })
     res.json(comments)
 }

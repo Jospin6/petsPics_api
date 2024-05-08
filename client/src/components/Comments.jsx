@@ -24,7 +24,7 @@ export const Comments = () => {
             rounded-lg pl-2 outline-none text-black" placeholder="Enter your comment"/>
             <Image src={paper_plane} alt="send" style="w-[25px] h-[25px] "/>
         </div>
-        <div className="bg-white rounded-lg mt-2 h-auto">
+        <div className="bg-white rounded-lg mt-2 h-auto p-2">
             {
                 comments.map(comment => (<CommentItem comment={comment} key={comment.id}/>))
             }
