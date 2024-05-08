@@ -33,7 +33,7 @@ export const PostItem = ({ showCommentIcon, pet }) => {
                             alt="heart"
                             style="w-[20px] h-[20px]" />
                     </button>
-                    {/* <span className="text-gray-500 text-[12px]"> { pet.likes.length } </span> */}
+                    <span className="text-gray-500 text-[12px]"> { pet.likes?.length } </span>
                 </div>
                 <Link to={`/user/comment/${pet.id}`} className={showCommentIcon}>
                     <Image
