@@ -7,10 +7,13 @@ import { useDispatch, useSelector } from "react-redux"
 import { fetchPostComments, createComment } from '../slices/comments/commentApi'
 import { useEffect, useState } from "react"
 import { getComments } from '../helpers/commentHelper'
+import { getSinglePost } from '../helpers/petHelper'
+import { fetchSinglePost } from '../slices/posts/postApi'
 
 export const Comments = () => {
     const { id } = useParams()
     const comments = useSelector(getComments)
+    const post = useSelector(getSinglePost)
     const dispatch = useDispatch()
     const [comment, setComment] = useState("")
     const handleComment = (e) => setComment(e.target.value)
@@ -24,10 +27,11 @@ export const Comments = () => {
 
     useEffect(() => {
         dispatch(fetchPostComments(id))
+        dispatch(fetchSinglePost(id))
     }, [dispatch])
 
     return <div className="mt-2">
-        {/* <PostItem showCommentIcon="hidden"/> */}
+        <PostItem pet={post} showCommentIcon="hidden"/>
         <div className="h-[40px] rounded-lg bg-white mt-2 flex justify-between items-center">
             <input type="text" value={comment} onChange={handleComment}
                 className="w-[94%] h-[35px] border-[1px] border-gray-400 
