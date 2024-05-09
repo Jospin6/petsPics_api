@@ -14,14 +14,14 @@ const likeSlice = createSlice({
         builder.addCase(fetchUsersLikedPost.pending, (state) => {
             state.loading = true
         })
-        .addCase(fetchUsersLikedPost.fulfilled, (state, action) => {
+        builder.addCase(fetchUsersLikedPost.fulfilled, (state, action) => {
             state.loading = false
             state.likes = action.payload
             state.error = ""
         })
-        .addCase(fetchUsersLikedPost.rejected, (state, action) => {
+        builder.addCase(fetchUsersLikedPost.rejected, (state, action) => {
             state.loading = false
-            state.loading = []
+            state.likes = []
             state.error = action.payload
         })
     }
