@@ -5,7 +5,7 @@ const initialState = {
     loading: false,
     users: [],
     isAuth: false,
-    currentUser: {},
+    currentUser: [],
     error: ""
 }
 
@@ -15,6 +15,9 @@ const userSlice = createSlice({
     reducers: {
         checkeAuth: (state, action) => {
             state.isAuth = action.payload
+        },
+        current: (state, action) => {
+            state.currentUser = action.payload.currentUser
         }
     },
     extraReducers: (builder) => {
@@ -35,6 +38,6 @@ const userSlice = createSlice({
     }
 })
 
-export const { checkeAuth } = userSlice.actions
+export const { checkeAuth, current } = userSlice.actions
 
 export default userSlice.reducer

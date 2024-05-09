@@ -12,12 +12,12 @@ const validationSchema = Yup.object({
 
 const getUsers = state => state.user.users
 const isUserAuth = state => state.user.isAuth
-const currentUser = state => state.user.currentUser
+const getcurrentUser = state => state.user.currentUser
 
 export {
     initialValues,
     validationSchema,
     getUsers,
     isUserAuth,
-    currentUser
+    getcurrentUser
 }
