@@ -14,7 +14,7 @@ export const UserAccount = () => {
             <MiniPetCard/>
         </div>
         <div>
-            <PostItem/>
+            {/* <PostItem/> */}
         </div>
     </div>
 }

@@ -12,6 +12,7 @@ module.exports = (sequelize, DataTypes) => {
     static associate(models) {
       // define association here
       Like.belongsTo(models.Post, {
+        as: 'Post',
         onDelete: 'CASCADE'
       })
     }
