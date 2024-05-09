@@ -1,4 +1,4 @@
-const { Like } = require("../models")
+const { Like, Post } = require("../models")
 
 const create = async (req, res) => {
     const { PostId } = req.body
@@ -27,7 +27,8 @@ const create = async (req, res) => {
 const getUserLikes = async (req, res) => {
     const { id } = req.user
     const likes = await Like.findAll({
-        where: {UserId: id}
+        where: {UserId: id},
+        include: [{model: Post, as: 'Post'}]
     })
     res.json(likes)
 }
