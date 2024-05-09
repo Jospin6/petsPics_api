@@ -24,6 +24,15 @@ const create = async (req, res) => {
     }
 }
 
+const getUserLikes = async (req, res) => {
+    const { id } = req.user
+    const likes = await Like.findAll({
+        where: {UserId: id}
+    })
+    res.json(likes)
+}
+
 module.exports = {
-    create
+    create,
+    getUserLikes
 }
