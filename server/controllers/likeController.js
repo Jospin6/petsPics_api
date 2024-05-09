@@ -28,7 +28,14 @@ const getUserLikes = async (req, res) => {
     const { id } = req.user
     const likes = await Like.findAll({
         where: {UserId: id},
-        include: [{model: Post, as: 'Post'}]
+        include: [{
+            model: Post, 
+            as: 'Post',
+            include: [{
+                model: Like, 
+                as: 'likes'
+            }] 
+        }]
     })
     res.json(likes)
 }

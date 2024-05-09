@@ -11,12 +11,10 @@ export const Likes = () => {
     useEffect(() => {
         dispatch(fetchUsersLikedPost())
     }, [dispatch])
-    
+
     return <div>
-        <div>liked</div>
-        {/* <PostItem/> */}
         {
-            likedPosts.map((like, key) => (<div key={key}> {like.id} </div>))
+            likedPosts.map((like, key) => (<PostItem key={key} pet={like.Post}/>))
         }
     </div>
 }
