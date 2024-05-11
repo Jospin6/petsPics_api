@@ -6,11 +6,13 @@ const {
     getUsers,
     create,
     show,
-    login
+    login,
+    currentUser
 } = require("../controllers/userController")
 
 
 router.get("/users", validateToken, getUsers)
+router.get("/users/auth", validateToken, currentUser)
 
 router.post("/users", create)
 router.get("/users/:id", show)

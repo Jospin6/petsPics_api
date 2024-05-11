@@ -52,5 +52,6 @@ module.exports = {
     getUsers,
     create,
     show,
-    login
+    login,
+    currentUser
 }
