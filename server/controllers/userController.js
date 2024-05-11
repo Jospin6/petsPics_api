@@ -43,6 +43,10 @@ const login = async (req, res) => {
     })
 } 
 
+const currentUser = (req, res) => {
+    res.json(req.user)
+}
+
 
 module.exports = {
     getUsers,
