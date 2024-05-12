@@ -21,6 +21,15 @@ const show = async (req, res) => {
     res.json(post)
 }
 
+const usersPosts = async (req, res) => {
+    const { id } = req.user
+    const posts = await Post.findAll({
+        where: { UserId: id },
+        include: [{ model: Like, as: 'likes'}] 
+    })
+    res.json(posts)
+}
+
 const update = async (req, res) => {
 
 }
@@ -34,5 +43,6 @@ module.exports = {
     create,
     show,
     update,
-    remove
+    remove,
+    usersPosts
 }
