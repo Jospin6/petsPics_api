@@ -6,6 +6,7 @@ import userPetReducer from './pets/userPetSlice'
 import commentsReducer from './comments/commentSlice'
 import singlePostReducer from './posts/singlePostSlice'
 import likeReducer from './likes/likeSlise'
+import currentReducer from './user/currentSlice'
 
 
 
@@ -17,7 +18,8 @@ export const store = configureStore({
         userPet: userPetReducer,
         comments: commentsReducer,
         singlePost: singlePostReducer,
-        likes: likeReducer
+        likes: likeReducer,
+        current: currentReducer
     }
 })
 
