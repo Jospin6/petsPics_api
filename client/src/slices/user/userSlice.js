@@ -4,8 +4,6 @@ import { fetchUsers } from './userApi'
 const initialState = {
     loading: false,
     users: [],
-    isAuth: false,
-    currentUser: [],
     error: ""
 }
 
@@ -15,9 +13,6 @@ const userSlice = createSlice({
     reducers: {
         checkeAuth: (state, action) => {
             state.isAuth = action.payload
-        },
-        current: (state, action) => {
-            state.currentUser = action.payload.currentUser
         }
     },
     extraReducers: (builder) => {
@@ -27,7 +22,6 @@ const userSlice = createSlice({
         builder.addCase(fetchUsers.fulfilled, (state, action) => {
             state.loading = false
             state.users = action.payload.getUsers
-            state.currentUser = action.payload.currentUser
             state.error = ""
         })
         builder.addCase(fetchUsers.rejected, (state, action) => {
@@ -38,6 +32,6 @@ const userSlice = createSlice({
     }
 })
 
-export const { checkeAuth, current } = userSlice.actions
+export const { checkeAuth } = userSlice.actions
 
 export default userSlice.reducer
