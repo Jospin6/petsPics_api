@@ -11,7 +11,7 @@ const initialState = {
 const currentSlice = createSlice({
     name: "current",
     reducers: {
-        handleAuth: (state, action) => {
+        setAuth: (state, action) => {
             state.isAuth = action.payload
         }
     },
@@ -34,6 +34,6 @@ const currentSlice = createSlice({
     }
 })
 
-export const { handleAuth } = currentSlice.actions
+export const { setAuth } = currentSlice.actions
 
 export default currentSlice.reducer
