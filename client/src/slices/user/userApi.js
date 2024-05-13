@@ -42,5 +42,8 @@ export const updateUserName = createAsyncThunk("user/updateUserName", async (dat
         headers: {
             accessToken: localStorage.getItem("accessToken")
         }
+    }).then(response => {
+        console.log(response.data.message)
     })
+    .catch(error => error.message)
 })

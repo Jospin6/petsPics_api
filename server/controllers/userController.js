@@ -45,12 +45,12 @@ const login = async (req, res) => {
 
 const update = async (req, res) => {
     const { id } = req.user
-    const { newUserName } = req.body
+    const { userName } = req.body
     const user = await User.findByPk(id)
     if (!user) {
         res.json("WTF!!!")
     }
-    user.userName = newUserName;
+    user.userName = userName;
     await user.save();
 
     res.json({ message: 'Profile updated', user });
