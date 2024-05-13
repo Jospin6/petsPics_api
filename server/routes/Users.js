@@ -7,7 +7,8 @@ const {
     create,
     show,
     login,
-    currentUser
+    currentUser,
+    update
 } = require("../controllers/userController")
 
 
@@ -18,6 +19,7 @@ router.post("/users", create)
 router.get("/users/:id", show)
 
 router.post("/users/login", login)
+router.put("/users", validateToken, update)
 
 
 
