@@ -43,6 +43,13 @@ const login = async (req, res) => {
     })
 } 
 
+const update = (req, res) => {
+    const { id } = req.user
+    const { userName } = res.body
+    const user = User.update({userName}, {where: {id}})
+    res.json(user)
+}
+
 const currentUser = (req, res) => {
     res.json(req.user)
 }
@@ -53,5 +60,6 @@ module.exports = {
     create,
     show,
     login,
-    currentUser
+    currentUser,
+    update
 }
