@@ -43,11 +43,17 @@ const login = async (req, res) => {
     })
 } 
 
-const update = (req, res) => {
+const update = async (req, res) => {
     const { id } = req.user
-    const { userName } = res.body
-    const user = User.update({userName}, {where: {id}})
-    res.json(user)
+    const { newUserName } = req.body
+    const user = await User.findByPk(id)
+    if (!user) {
+        res.json("WTF!!!")
+    }
+    user.userName = newUserName;
+    await user.save();
+
+    res.json({ message: 'Profile updated', user });
 }
 
 const currentUser = (req, res) => {
