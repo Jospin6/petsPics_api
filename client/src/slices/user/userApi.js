@@ -36,3 +36,11 @@ export const fetchCurrentUser = createAsyncThunk("current/fetchCurrentUser", asy
     .then(response => response.data)
     .catch(error => error.message)
 })
+
+export const updateUserName = createAsyncThunk("user/updateUserName", async (data) => {
+    return await axios.put("http://localhost:3001/users", data, {
+        headers: {
+            accessToken: localStorage.getItem("accessToken")
+        }
+    })
+})
