@@ -26,3 +26,36 @@ export const fetchUsers = createAsyncThunk("user/fetchUsers", async () => {
     .then(response => response.data)
     .catch(error => error.message)
 })
+
+export const fetchCurrentUser = createAsyncThunk("current/fetchCurrentUser", async () => {
+    return await axios.get("http://localhost:3001/users/auth", {
+        headers: {
+            accessToken: localStorage.getItem("accessToken")
+        }
+    })
+    .then(response => response.data)
+    .catch(error => error.message)
+})
+
+export const updateUserName = createAsyncThunk("user/updateUserName", async (data) => {
+    return await axios.put("http://localhost:3001/users", data, {
+        headers: {
+            accessToken: localStorage.getItem("accessToken")
+        }
+    }).then(response => {
+        console.log(response.data.message)
+    })
+    .catch(error => error.message)
+})
+
+export const updatePassword = createAsyncThunk("user/updatePassword", async (data) => {
+    return await axios.put("http://localhost:3001/users/changePassword", data, {
+        headers: {
+            accessToken: localStorage.getItem("accessToken")
+        }
+    })
+    .then(response => {
+        console.log(response.data)
+    })
+    .catch(error => error.message)
+})

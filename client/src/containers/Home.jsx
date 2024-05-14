@@ -8,18 +8,8 @@ import { Comments } from '../components/Comments';
 import { Likes } from '../components/Likes';
 import { UserAccount } from '../components/UserAccount';
 import { UserInfo } from '../components/UserInfo';
-import { current} from '../slices/user/userSlice'
-import { getcurrentUser } from '../helpers/userHelper'
-import { useDispatch, useSelector } from 'react-redux';
-import { useEffect } from 'react';
 
 export const Home = () => {
-    // const current_user = useSelector(getcurrentUser)
-    // const dispatch = useDispatch()
-    
-    // useEffect(() => {
-    //     dispatch(current({currentUser: localStorage.getItem("accessToken")}))
-    // }, [])
 
     return <div className='min-h-[100vh] h-auto bg-[#FCFCFC]'>
         <Navbar />
