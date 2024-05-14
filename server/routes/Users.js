@@ -8,7 +8,8 @@ const {
     show,
     login,
     currentUser,
-    update
+    update,
+    changePassword
 } = require("../controllers/userController")
 
 
@@ -20,7 +21,7 @@ router.get("/users/:id", show)
 
 router.post("/users/login", login)
 router.put("/users", validateToken, update)
-
+router.put("/users/changePassword", validateToken, changePassword)
 
 
 module.exports = router
