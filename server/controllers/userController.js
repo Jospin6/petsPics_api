@@ -60,6 +60,23 @@ const currentUser = (req, res) => {
     res.json(req.user)
 }
 
+const changePassword = async (req, res) => {
+    const { id } = req.user
+    const { oldPassword, newPassword } = req.body
+    const user = await User.findOne({where: {id}})
+
+    bcryptjs.compare(oldPassword, user.password).then(async (match) => {
+        if (!match) {
+            res.json({error: "wrong password!"})
+        }
+        bcryptjs.hash(newPassword, 10).then(hash => {
+            User.update({password: hash}, {where: {id}})
+            res.json("password updated successfully!")
+        })
+    })
+
+}
+
 
 module.exports = {
     getUsers,
@@ -67,5 +84,6 @@ module.exports = {
     show,
     login,
     currentUser,
-    update
+    update,
+    changePassword
 }
