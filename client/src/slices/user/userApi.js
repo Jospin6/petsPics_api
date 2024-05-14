@@ -47,3 +47,15 @@ export const updateUserName = createAsyncThunk("user/updateUserName", async (dat
     })
     .catch(error => error.message)
 })
+
+export const updatePassword = createAsyncThunk("user/updatePassword", async (data) => {
+    return await axios.put("http://localhost:3001/users/changePassword", data, {
+        headers: {
+            accessToken: localStorage.getItem("accessToken")
+        }
+    })
+    .then(response => {
+        console.log(response.data)
+    })
+    .catch(error => error.message)
+})
