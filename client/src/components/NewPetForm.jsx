@@ -14,7 +14,8 @@ export const NewPetForm = () => {
         petName: "",
         species: "",
         breed: "",
-        age: ""
+        age: "",
+        petImage: ""
 
     }
 

@@ -17,7 +17,8 @@ export const PostForm = () => {
 
     const initialValues = {
         pet_id: "",
-        content: ""
+        content: "",
+        petImage: ""
     }
 
     const validationSchema = Yup.object({
