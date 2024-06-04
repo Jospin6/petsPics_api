@@ -57,6 +57,12 @@ export const PostForm = () => {
                 fieldName="content"
                 type="text"
                 placeholder="Write text here" />
+            <Input
+                labelText="Pet image"
+                id="petImage"
+                fieldName="petImage"
+                type="file"
+                placeholder="" />
             <div className="flex justify-end">
                 <SubmitFormBtn text="Submit" className="w-[150px]" />
             </div>
