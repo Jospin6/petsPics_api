@@ -22,7 +22,8 @@ export const PostForm = () => {
 
     const validationSchema = Yup.object({
         pet_id: Yup.number().required(),
-        content: Yup.string().required()
+        content: Yup.string().required(),
+        petImage: Yup.string().required()
     })
 
     useEffect(()  => {
