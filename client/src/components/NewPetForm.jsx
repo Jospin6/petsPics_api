@@ -15,24 +15,24 @@ export const NewPetForm = () => {
         species: "",
         breed: "",
         age: ""
-    
+
     }
-    
+
     const validationSchema = Yup.object({
         petName: Yup.string().required(),
         species: Yup.string().required(),
         breed: Yup.string().required(),
         age: Yup.string().required()
     })
-    
+
     const submit = (data, { resetForm }) => {
         dispatch(createPet(data))
         resetForm()
         navigate("/user")
     }
 
-    return <Formik 
-        initialValues={initialValues} 
+    return <Formik
+        initialValues={initialValues}
         validationSchema={validationSchema}
         onSubmit={submit}>
         <Form>
@@ -81,6 +81,12 @@ export const NewPetForm = () => {
                 id="age"
                 fieldName="age"
                 type="date" />
+            <Input
+                labelText="Pet image"
+                id="petImage"
+                fieldName="petImage"
+                type="file"
+                placeholder="" />
             <div className="flex justify-end">
                 <SubmitFormBtn text="Submit" className="w-[150px]" />
             </div>
