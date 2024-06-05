@@ -1,4 +1,4 @@
-const { Pet, Image } = require("../models")
+const { Pet } = require("../models")
 
 const index = async (req, res) => {
     const pets = await Pet.findAll()
@@ -7,9 +7,8 @@ const index = async (req, res) => {
 
 const create = async (req, res) => {
     const { id } = req.user
-    const {petName, species, breed, age, image} = req.body
-    const pat = Pet.create({petName, species, breed, age, user_id: id})
-
+    const {petName, species, breed, age} = req.body
+    Pet.create({petName, species, breed, age, user_id: id})
     res.json("PET CREATED !")
 }
 

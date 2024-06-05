@@ -1,4 +1,4 @@
-const { Post, Like } = require("../models")
+const { Post, Like, Image } = require("../models")
 
 const index = async (req, res) => {
     const posts = await Post.findAll({ include: [{ model: Like, as: 'likes'}] })
@@ -8,7 +8,8 @@ const index = async (req, res) => {
 const create = async (req, res) => {
     const { pet_id, content } = req.body
     const { id } = req.user
-    await Post.create({user_id: id, pet_id, content})
+    const post = await Post.create({user_id: id, pet_id, content})
+    Image.create({url: `http://localhost:5173/${req.file.filename}`, PostId: post.id})
     res.json("Created post!")
 }
 
