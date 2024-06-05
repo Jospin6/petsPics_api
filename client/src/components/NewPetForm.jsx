@@ -24,7 +24,7 @@ export const NewPetForm = () => {
         species: Yup.string().required(),
         breed: Yup.string().required(),
         age: Yup.string().required(),
-        image: Yup.string().required()
+        image: Yup.mixed().required('Image is required')
     })
 
     const submit = (data, { resetForm }) => {
