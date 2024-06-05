@@ -8,7 +8,7 @@ const index = async (req, res) => {
 const create = async (req, res) => {
     const { id } = req.user
     const {petName, species, breed, age} = req.body
-    Pet.create({petName, species, breed, age, user_id: id, image: req.file.filename})
+    Pet.create({petName, species, breed, age, user_id: id, image: `http://localhost:5173/${req.file.filename}`})
     res.json("PET CREATED !")
 }
 
