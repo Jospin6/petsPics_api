@@ -9,7 +9,7 @@ const {
 } = require("../controllers/postController")
 
 router.get("/post", index)
-router.post("/post", validateToken, create)
+router.post("/post", validateToken, upload.single('image'), create)
 router.get("/post/:id", validateToken, show)
 router.get("/post/user", validateToken, usersPosts)
 
