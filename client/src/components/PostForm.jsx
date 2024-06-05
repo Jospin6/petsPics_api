@@ -18,13 +18,13 @@ export const PostForm = () => {
     const initialValues = {
         pet_id: "",
         content: "",
-        petImage: ""
+        image: ""
     }
 
     const validationSchema = Yup.object({
         pet_id: Yup.number().required(),
         content: Yup.string().required(),
-        petImage: Yup.string().required()
+        image: Yup.string().required()
     })
 
     useEffect(()  => {
@@ -61,8 +61,8 @@ export const PostForm = () => {
                 placeholder="Write text here" />
             <Input
                 labelText="Pet image"
-                id="petImage"
-                fieldName="petImage"
+                id="image"
+                fieldName="image"
                 type="file"
                 placeholder="" />
             <div className="flex justify-end">

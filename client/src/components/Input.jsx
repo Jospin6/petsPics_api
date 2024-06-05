@@ -11,6 +11,7 @@ export const Input = (props) => {
             name={fieldName}
             type={type}
             placeholder={placeholder}
+            accept="image/*"
             className="w-full h-[35px] border-[1px] border-gray-400 
             rounded-lg pl-2 outline-none text-black"/>
     </div>
