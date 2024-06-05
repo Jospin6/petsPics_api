@@ -1,7 +1,7 @@
 const { Post, Like, Image } = require("../models")
 
 const index = async (req, res) => {
-    const posts = await Post.findAll({ include: [{ model: Like, as: 'likes'}] })
+    const posts = await Post.findAll({ include: [{ model: Like, as: 'likes'}, { model: Image, as: 'image'}] })
     res.json(posts)
 }
 
