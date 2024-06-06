@@ -1,6 +1,7 @@
 const express = require("express")
 const router = new express.Router()
 const {validateToken} = require("../middlewares/authMiddleware")
+const {upload} = require('../middlewares/uploadImgMiddleware')
 const { 
     create,
     show,

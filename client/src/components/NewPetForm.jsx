@@ -15,8 +15,7 @@ export const NewPetForm = () => {
         species: "",
         breed: "",
         age: "",
-        image: ""
-
+        file: null
     }
 
     const validationSchema = Yup.object({
@@ -24,7 +23,7 @@ export const NewPetForm = () => {
         species: Yup.string().required(),
         breed: Yup.string().required(),
         age: Yup.string().required(),
-        image: Yup.mixed().required('Image is required')
+        file: Yup.mixed().required()
     })
 
     const submit = (data, { resetForm }) => {
@@ -37,7 +36,7 @@ export const NewPetForm = () => {
         initialValues={initialValues}
         validationSchema={validationSchema}
         onSubmit={submit}>
-        <Form>
+        <Form encType="multipart/form-data">
             <Input
                 labelText="Pet name"
                 id="petName"
@@ -85,10 +84,10 @@ export const NewPetForm = () => {
                 type="date" />
             <Input
                 labelText="Pet image"
-                id="image"
-                fieldName="image"
-                type="file"
-                placeholder="" />
+                id="file"
+                fieldName="file"
+                type="file"/>
+            
             <div className="flex justify-end">
                 <SubmitFormBtn text="Submit" className="w-[150px]" />
             </div>
