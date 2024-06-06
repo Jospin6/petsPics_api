@@ -1,6 +1,4 @@
-import { Form, Formik } from "formik"
-import { Input } from "./Input"
-import { Select } from "./Select"
+import { useFormik } from "formik"
 import { SubmitFormBtn } from './SubmitFormBtn'
 import * as Yup from 'yup'
 import { createPet } from '../slices/pets/petApi'
@@ -15,7 +13,7 @@ export const NewPetForm = () => {
         species: "",
         breed: "",
         age: "",
-        file: null
+        image: null
     }
 
     const validationSchema = Yup.object({
@@ -23,74 +21,109 @@ export const NewPetForm = () => {
         species: Yup.string().required(),
         breed: Yup.string().required(),
         age: Yup.string().required(),
-        file: Yup.mixed().required()
+        image: Yup.mixed().required()
     })
 
-    const submit = (data, { resetForm }) => {
-        dispatch(createPet(data))
-        resetForm()
-        navigate("/user")
-    }
+    const formik = useFormik({
+        initialValues,
+        validationSchema,
+        onSubmit: (data, { resetForm }) => {
+            const formData = new FormData()
+            formData.append('petName', data.petName)
+            formData.append('species', data.species)
+            formData.append('breed', data.breed)
+            formData.append('age', data.age)
+            formData.append('image', data.image)
+            dispatch(createPet(formData))
+            resetForm()
+            navigate("/user")
+        }
+    })
 
-    return <Formik
-        initialValues={initialValues}
-        validationSchema={validationSchema}
-        onSubmit={submit}>
-        <Form encType="multipart/form-data">
-            <Input
-                labelText="Pet name"
-                id="petName"
-                fieldName="petName"
-                type="text"
-                placeholder="Enter pet name" />
-            <div className="grid grid-cols-4 gap-4">
-                <Select
-                    labelText="Species"
-                    fieldName="species"
-                    id="petSpecy"
-                    className="col-span-2">
-                    <option value="">Choose a specie</option>
-                    <option value="Dog">Dog</option>
-                    <option value="Cat">Cat</option>
-                    <option value="Fish">Fish</option>
-                </Select>
-                <Select
-                    labelText="Breed"
-                    fieldName="breed"
-                    id="petBreed"
-                    className="col-span-2">
-                    <option value="">Select a pet breed</option>
-                    <optgroup label="Dog" className="text-gray-600">
-                        <option value="Bulldog">Bulldog</option>
-                        <option value="Beagle">Beagle</option>
-                        <option value="Poodle">Poodle</option>
-                    </optgroup>
-                    <optgroup label="Cat" className="text-gray-600">
-                        <option value="Maine coon">Maine coon</option>
-                        <option value="Persan">Persan</option>
-                        <option value="Bengal">Bengal</option>
-                    </optgroup>
-                    <optgroup label="Fish" className="text-gray-600">
-                        <option value="Guppy">Guppy</option>
-                        <option value="Molly">Molly</option>
-                        <option value="Bengal">Goldfish</option>
-                    </optgroup>
-                </Select>
+    return <div>
+        <form onSubmit={formik.handleSubmit} encType="multipart/form-data">
+            <div className="mt-2">
+                <label htmlFor="petName" className="block mb-[5px] bolder text-[16px]"> Pet name </label>
+                <input
+                    id="petName"
+                    name="petName"
+                    type="text"
+                    placeholder="Enter pet name"
+                    className="w-full h-[35px] border-[1px] border-gray-400 
+                    rounded-lg pl-2 outline-none text-black"
+                    onChange={formik.handleChange}
+                    value={formik.values.petName} />
             </div>
-            <Input
-                labelText="Birthday"
-                id="age"
-                fieldName="age"
-                type="date" />
-            <Input
-                labelText="Pet image"
-                id="file"
-                fieldName="file"
-                type="file"/>
-            
+            <div className="grid grid-cols-4 gap-4">
+                <div className="col-span-2">
+                    <label htmlFor="species" className="block mb-[5px] bolder text-[16px]"> Species </label>
+                    <select
+                        name="species"
+                        id="petSpecy"
+                        className="w-full h-[35px] border-[1px] border-gray-400 
+            rounded-lg pl-2 outline-none text-black"
+                        onChange={formik.handleChange}
+                        value={formik.values.species}>
+                        <option value="">Choose a specie</option>
+                        <option value="Dog">Dog</option>
+                        <option value="Cat">Cat</option>
+                        <option value="Fish">Fish</option>
+                    </select>
+                </div>
+                <div className="col-span-2">
+                    <label htmlFor="breed" className="block mb-[5px] bolder text-[16px]"> Breed </label>
+                    <select
+                        name="breed"
+                        id="breed"
+                        className="w-full h-[35px] border-[1px] border-gray-400 
+            rounded-lg pl-2 outline-none text-black"
+                        onChange={formik.handleChange}
+                        value={formik.values.breed}>
+                        <option value="">Select a pet breed</option>
+                        <optgroup label="Dog" className="text-gray-600">
+                            <option value="Bulldog">Bulldog</option>
+                            <option value="Beagle">Beagle</option>
+                            <option value="Poodle">Poodle</option>
+                        </optgroup>
+                        <optgroup label="Cat" className="text-gray-600">
+                            <option value="Maine coon">Maine coon</option>
+                            <option value="Persan">Persan</option>
+                            <option value="Bengal">Bengal</option>
+                        </optgroup>
+                        <optgroup label="Fish" className="text-gray-600">
+                            <option value="Guppy">Guppy</option>
+                            <option value="Molly">Molly</option>
+                            <option value="Bengal">Goldfish</option>
+                        </optgroup>
+                    </select>
+                </div>
+            </div>
+            <div className="mt-2">
+                <label htmlFor="age" className="block mb-[5px] bolder text-[16px]"> Birthday </label>
+                <input
+                    id="age"
+                    name="age"
+                    type="date"
+                    placeholder="Enter pet name"
+                    className="w-full h-[35px] border-[1px] border-gray-400 
+                    rounded-lg pl-2 outline-none text-black"
+                    onChange={formik.handleChange}
+                    value={formik.values.age} />
+            </div>
+            <div className="mt-2">
+                <label htmlFor="image" className="block mb-[5px] bolder text-[16px]"> Upload Image </label>
+                <input
+                    type="file"
+                    id="image"
+                    className="w-full h-[35px] border-[1px] border-gray-400 
+                    rounded-lg pl-2 outline-none text-black"
+                    accept='image/*'
+                    onChange={(e) => formik.setFieldValue('image', e.target.files[0])} />
+            </div>
             <div className="flex justify-end">
                 <SubmitFormBtn text="Submit" className="w-[150px]" />
             </div>
-        </Form>
-    </Formik>
+        </form>
+    </div>
+
 }

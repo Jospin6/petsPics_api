@@ -10,7 +10,7 @@ const {
 } = require("../controllers/petController")
 
 router.get("/pets", index)
-router.post("/pets", validateToken, upload.single('file'), create)
+router.post("/pets", validateToken, upload.single('image'), create)
 router.get("/pets/:id", show)
 router.get("/userPet", validateToken, userPets)
 
