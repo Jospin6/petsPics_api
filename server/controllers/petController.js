@@ -8,14 +8,14 @@ const index = async (req, res) => {
 const create =async (req, res) => {
     const { id } = req.user
     const {petName, species, breed, age} = req.body
+    const { filename } = req.file
     if (!req.file) {
-        console.log("No file sended!")
+        res.json({error: "No image sended!"})
     } else {
-        console.log(req.file)
+        Pet.create({petName, species, breed, age, user_id: id, image: filename})
+        res.json("PET CREATED !")
     }
-    console.log(req.body)
-    // Pet.create({petName, species, breed, age, user_id: id, image: `http://localhost:5173/${req.file.filename}`})
-    // res.json("PET CREATED !")
+    
 }
 
 const show = async (req, res) => {
