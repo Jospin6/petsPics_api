@@ -43,6 +43,9 @@ export const Login = () => {
                     value={formik.values.userName}
                     placeholder="Enter your name"
                 />
+                {formik.errors.userName && formik.touched.userName && (
+                    <div className="text-red-500">{formik.errors.userName}</div>
+                )}
                 <Input
                     labelText="Password"
                     id="password"
@@ -52,6 +55,9 @@ export const Login = () => {
                     onchange={formik.handleChange}
                     value={formik.values.password}
                 />
+                {formik.errors.password && formik.touched.password && (
+                    <div className="text-red-500">{formik.errors.password}</div>
+                )}
                 <div className='flex justify-between'>
                     <Checkbox
                         checked="checked"

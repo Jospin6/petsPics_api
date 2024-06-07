@@ -39,6 +39,9 @@ export const Signin = () => {
                     onchange={formik.handleChange}
                     value={formik.values.userName}
                 />
+                {formik.errors.userName && formik.touched.userName && (
+                    <div className="text-red-500">{formik.errors.userName}</div>
+                )}
                 <Input
                     labelText="Password"
                     id="password"
@@ -48,6 +51,9 @@ export const Signin = () => {
                     onchange={formik.handleChange}
                     value={formik.values.password}
                 />
+                {formik.errors.password && formik.touched.password && (
+                    <div className="text-red-500">{formik.errors.password}</div>
+                )}
                 <SubmitFormBtn text="Sign In" className="w-full" />
             </form>
         </AuthFrame>
