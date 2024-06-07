@@ -5,10 +5,17 @@ const index = async (req, res) => {
     res.json(pets)
 }
 
-const create = async (req, res) => {
+const create =async (req, res) => {
     const { id } = req.user
-    Pet.create({...req.body, user_id: id})
-    res.json("PET CREATED !")
+    const {petName, species, breed, age} = req.body
+    const { filename } = req.file
+    if (!req.file) {
+        res.json({error: "No image sended!"})
+    } else {
+        Pet.create({petName, species, breed, age, user_id: id, image: filename})
+        res.json("PET CREATED !")
+    }
+    
 }
 
 const show = async (req, res) => {

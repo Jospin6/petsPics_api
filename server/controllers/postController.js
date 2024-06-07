@@ -1,22 +1,28 @@
-const { Post, Like } = require("../models")
+const { Post, Like, Image } = require("../models")
 
 const index = async (req, res) => {
-    const posts = await Post.findAll({ include: [{ model: Like, as: 'likes'}] })
+    const posts = await Post.findAll({ include: [{ model: Like, as: 'likes' }, { model: Image, as: 'image' }] })
     res.json(posts)
 }
 
 const create = async (req, res) => {
     const { pet_id, content } = req.body
     const { id } = req.user
-    await Post.create({user_id: id, pet_id, content})
-    res.json("Created post!")
+    const { filename } = req.file
+    if (!req.file) {
+        res.json({ error: "No image sended!" })
+    } else {
+        const post = await Post.create({ user_id: id, pet_id, content })
+        Image.create({ url: filename, PostId: post.id })
+        res.json("Created post!")
+    }
 }
 
 const show = async (req, res) => {
     const id = req.params.id
     const post = await Post.findOne({
         where: { id },
-        include: [{ model: Like, as: 'likes'}]
+        include: [{ model: Like, as: 'likes' }]
     })
     res.json(post)
 }
@@ -25,7 +31,7 @@ const usersPosts = async (req, res) => {
     const { id } = req.user
     const posts = await Post.findAll({
         where: { UserId: id },
-        include: [{ model: Like, as: 'likes'}] 
+        include: [{ model: Like, as: 'likes' }]
     })
     res.json(posts)
 }

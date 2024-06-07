@@ -14,6 +14,10 @@ module.exports = (sequelize, DataTypes) => {
         as: 'likes',
         onDelete: 'CASCADE'
       })
+      Post.hasMany(models.Image, {
+        as: 'image',
+        onDelete: 'CASCADE'
+      })
     }
   }
   Post.init({

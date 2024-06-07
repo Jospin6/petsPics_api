@@ -1,11 +1,12 @@
-import { Form, Formik } from "formik"
-import { Input } from "./Input"
-import { Select } from "./Select"
+import { useFormik } from "formik"
 import { SubmitFormBtn } from './SubmitFormBtn'
 import * as Yup from 'yup'
 import { createPet } from '../slices/pets/petApi'
 import { useDispatch } from 'react-redux'
 import { useNavigate } from "react-router-dom"
+import { Input } from "./Input"
+import { InputFile } from "./InputFile"
+import { Select } from "./Select"
 
 export const NewPetForm = () => {
     const dispatch = useDispatch()
@@ -14,50 +15,70 @@ export const NewPetForm = () => {
         petName: "",
         species: "",
         breed: "",
-        age: ""
-    
-    }
-    
-    const validationSchema = Yup.object({
-        petName: Yup.string().required(),
-        species: Yup.string().required(),
-        breed: Yup.string().required(),
-        age: Yup.string().required()
-    })
-    
-    const submit = (data, { resetForm }) => {
-        dispatch(createPet(data))
-        resetForm()
-        navigate("/user")
+        age: "",
+        image: null
     }
 
-    return <Formik 
-        initialValues={initialValues} 
-        validationSchema={validationSchema}
-        onSubmit={submit}>
-        <Form>
+    const validationSchema = Yup.object({
+        petName: Yup.string().required("Pet name is required "),
+        species: Yup.string().required(),
+        breed: Yup.string().required(),
+        age: Yup.string().required("Pet age is required "),
+        image: Yup.mixed().required()
+    })
+
+    const formik = useFormik({
+        initialValues,
+        validationSchema,
+        onSubmit: (data, { resetForm }) => {
+            const formData = new FormData()
+            formData.append('petName', data.petName)
+            formData.append('species', data.species)
+            formData.append('breed', data.breed)
+            formData.append('age', data.age)
+            formData.append('image', data.image)
+            dispatch(createPet(formData))
+            resetForm()
+            navigate("/user")
+        }
+    })
+
+    return <div>
+        <form onSubmit={formik.handleSubmit} encType="multipart/form-data">
             <Input
-                labelText="Pet name"
                 id="petName"
                 fieldName="petName"
                 type="text"
-                placeholder="Enter pet name" />
+                labelText="Pet name"
+                placeholder="Enter pet name"
+                onchange={formik.handleChange}
+                value={formik.values.petName} />
+            {formik.errors.petName && formik.touched.petName && (
+                <div className="text-red-500">{formik.errors.petName}</div>
+            )}
             <div className="grid grid-cols-4 gap-4">
                 <Select
-                    labelText="Species"
                     fieldName="species"
                     id="petSpecy"
-                    className="col-span-2">
+                    labelText="Species"
+                    className="col-span-2"
+                    onchange={formik.handleChange}
+                    value={formik.values.species}>
                     <option value="">Choose a specie</option>
                     <option value="Dog">Dog</option>
                     <option value="Cat">Cat</option>
                     <option value="Fish">Fish</option>
                 </Select>
+                {formik.errors.species && formik.touched.species && (
+                    <div className="text-red-500">{formik.errors.species}</div>
+                )}
                 <Select
-                    labelText="Breed"
                     fieldName="breed"
-                    id="petBreed"
-                    className="col-span-2">
+                    labelText="Breed"
+                    id="breed"
+                    className="col-span-2"
+                    onchange={formik.handleChange}
+                    value={formik.values.breed}>
                     <option value="">Select a pet breed</option>
                     <optgroup label="Dog" className="text-gray-600">
                         <option value="Bulldog">Bulldog</option>
@@ -75,15 +96,31 @@ export const NewPetForm = () => {
                         <option value="Bengal">Goldfish</option>
                     </optgroup>
                 </Select>
+                {formik.errors.breed && formik.touched.breed && (
+                    <div className="text-red-500">{formik.errors.breed}</div>
+                )}
             </div>
             <Input
-                labelText="Birthday"
                 id="age"
                 fieldName="age"
-                type="date" />
+                labelText="Birthday"
+                type="date"
+                placeholder="Enter pet name"
+                onchange={formik.handleChange}
+                value={formik.values.age} />
+            {formik.errors.age && formik.touched.age && (
+                <div className="text-red-500">{formik.errors.age}</div>
+            )}
+            <InputFile
+                labelText="Upload Image"
+                onchange={(e) => formik.setFieldValue('image', e.target.files[0])} />
+            {formik.errors.image && formik.touched.image && (
+                <div className="text-red-500">{formik.errors.image}</div>
+            )}
             <div className="flex justify-end">
                 <SubmitFormBtn text="Submit" className="w-[150px]" />
             </div>
-        </Form>
-    </Formik>
+        </form>
+    </div>
+
 }
