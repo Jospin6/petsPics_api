@@ -1,4 +1,4 @@
-const { Like, Post } = require("../models")
+const { Like, Post, Image } = require("../models")
 
 const create = async (req, res) => {
     const { PostId } = req.body
@@ -31,10 +31,7 @@ const getUserLikes = async (req, res) => {
         include: [{
             model: Post, 
             as: 'Post',
-            include: [{
-                model: Like, 
-                as: 'likes'
-            }] 
+            include: [{ model: Like, as: 'likes' },{ model: Image, as: 'image' }] 
         }]
     })
     res.json(likes)
