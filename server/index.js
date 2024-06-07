@@ -1,5 +1,6 @@
 const express = require('express')
 const cors = require("cors")
+const path = require("path")
 
 const app = express()
 const port = 3001
@@ -7,6 +8,8 @@ const port = 3001
 app.use(cors())
 
 app.use(express.json())
+
+app.use('/public', express.static(path.join(__dirname, 'public')));
 
 // Routes
 const userRouter = require("./routes/Users")

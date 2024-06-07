@@ -19,11 +19,11 @@ export const PostForm = () => {
     const initialValues = {
         pet_id: "",
         content: "",
-        image: ""
+        image: null
     }
 
     const validationSchema = Yup.object({
-        pet_id: Yup.number().required('This field is required'),
+        pet_id: Yup.number().required('Please choose a pet'),
         content: Yup.string().required('This field is required'),
         image: Yup.mixed().required('Image is required')
     })
@@ -54,6 +54,7 @@ export const PostForm = () => {
                 labelText="Choose a pet"
                 onchange={formik.handleChange}
                 value={formik.values.species}>
+                <option value=""> Choose a pet </option>
                 {
                     getPets.map(pet => (
                         <option value={pet.id} key={pet.id}> {pet.petName} </option>
