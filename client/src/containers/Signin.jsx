@@ -5,17 +5,22 @@ import { useDispatch } from 'react-redux'
 import { userRegistration } from '../slices/user/userApi'
 import { useNavigate } from "react-router-dom"
 import {initialValues, validationSchema} from '../helpers/userHelper'
+import { useFormik } from 'formik'
 
 
 export const Signin = () => {
     const dispatch = useDispatch()
     let navigate = useNavigate()
 
-    const submit = (data, { resetForm }) => {
-        dispatch(userRegistration(data))
-        resetForm()
-        navigate("/user")
-    }
+    const formik = useFormik({
+        initialValues,
+        validationSchema,
+        onSubmit: (data, { resetForm }) => {
+            dispatch(userRegistration(data))
+            resetForm()
+            navigate("/user")
+        }
+    })
 
     return <div className="w-full h-[100vh] flex items-center justify-center">
         <AuthFrame
@@ -23,26 +28,34 @@ export const Signin = () => {
             formDescription="Lorem ipsum dolor sit amet consectetur adipisicing elit. At soluta 
             unde sint qui, quis aut illo vitae velit."
             linkText="&#8592; LogIn"
-            link_path="/"
-            initialValue={initialValues}
-            onsubmit={submit}
-            validationschema={validationSchema}>
-
-            <Input
-                labelText="User name"
-                id="userName"
-                type="text"
-                fieldName="userName"
-                placeholder="Enter your name"
-            />
-            <Input
-                labelText="Password"
-                id="password"
-                type="password"
-                fieldName="password"
-                placeholder="Enter your password"
-            />
-            <SubmitFormBtn text="Sign In" className="w-full" />
+            link_path="/">
+            <form onSubmit={formik.handleSubmit}>
+                <Input
+                    labelText="User name"
+                    id="userName"
+                    type="text"
+                    fieldName="userName"
+                    placeholder="Enter your name"
+                    onchange={formik.handleChange}
+                    value={formik.values.userName}
+                />
+                {formik.errors.userName && formik.touched.userName && (
+                    <div className="text-red-500">{formik.errors.userName}</div>
+                )}
+                <Input
+                    labelText="Password"
+                    id="password"
+                    type="password"
+                    fieldName="password"
+                    placeholder="Enter your password"
+                    onchange={formik.handleChange}
+                    value={formik.values.password}
+                />
+                {formik.errors.password && formik.touched.password && (
+                    <div className="text-red-500">{formik.errors.password}</div>
+                )}
+                <SubmitFormBtn text="Sign In" className="w-full" />
+            </form>
         </AuthFrame>
     </div>
 }

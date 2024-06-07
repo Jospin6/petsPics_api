@@ -117,7 +117,7 @@ export const NewPetForm = () => {
             {formik.errors.image && formik.touched.image && (
                 <div className="text-red-500">{formik.errors.image}</div>
             )}
-            <div className="flex justify-end">
+            <div className="flex justify-start">
                 <SubmitFormBtn text="Submit" className="w-[150px]" />
             </div>
         </form>
