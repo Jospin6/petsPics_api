@@ -1,6 +1,5 @@
 import { Link } from "react-router-dom"
-import { MiniPetCard } from "./MiniPetCard"
-import { PostItem } from "./PostItem"
+import { UserPets } from "./UserPets"
 
 export const UserAccount = () => {
     return <div>
@@ -10,9 +9,7 @@ export const UserAccount = () => {
                 <span className="text-blue-600 text-[14px]">modify</span>
             </Link>
         </div>
-        <div className="flex">
-            <MiniPetCard/>
-        </div>
+        <UserPets/>
         <div>
             {/* <PostItem/> */}
         </div>
