@@ -7,6 +7,7 @@ import commentsReducer from './comments/commentSlice'
 import singlePostReducer from './posts/singlePostSlice'
 import likeReducer from './likes/likeSlise'
 import currentReducer from './user/currentSlice'
+import userPostsReducer from './posts/userPostsSlice'
 
 
 
@@ -19,7 +20,8 @@ export const store = configureStore({
         comments: commentsReducer,
         singlePost: singlePostReducer,
         likes: likeReducer,
-        current: currentReducer
+        current: currentReducer,
+        userPosts: userPostsReducer
     }
 })
 
