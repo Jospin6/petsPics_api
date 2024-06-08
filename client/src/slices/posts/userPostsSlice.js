@@ -14,12 +14,12 @@ const userPostsSlice = createSlice({
         builder.addCase(fetchUserPosts.pending, (state) => {
             state.loading = true
         })
-        .addCase(fetchUserPosts.fulfilled, (state, action) => {
+        builder.addCase(fetchUserPosts.fulfilled, (state, action) => {
             state.loading = false
             state.posts = action.payload
             state.error = ""
         })
-        .addCase(fetchUserPosts.rejected, (state, action) => {
+        builder.addCase(fetchUserPosts.rejected, (state, action) => {
             state.loading = false
             state.posts = []
             state.error = action.payload

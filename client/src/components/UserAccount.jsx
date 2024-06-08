@@ -3,6 +3,8 @@ import { UserPets } from "./UserPets"
 import { useDispatch, useSelector } from "react-redux"
 import { useEffect } from "react"
 import { fetchUserPosts } from "../slices/posts/postApi"
+import { fetchCurrentUser } from '../slices/user/userApi'
+import { PostItem } from "./PostItem"
 
 export const UserAccount = () => {
     const { user } = useSelector(state => state.current)
@@ -10,6 +12,7 @@ export const UserAccount = () => {
     const dispatch = useDispatch()
 
     useEffect(() => {
+        dispatch(fetchCurrentUser())
         dispatch(fetchUserPosts())
     }, [dispatch])
 

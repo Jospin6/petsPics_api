@@ -22,7 +22,7 @@ const show = async (req, res) => {
     const id = req.params.id
     const post = await Post.findOne({
         where: { id },
-        include: [{ model: Like, as: 'likes' }]
+        include: [{ model: Like, as: 'likes' }, { model: Image, as: 'image' }]
     })
     res.json(post)
 }
@@ -30,7 +30,7 @@ const show = async (req, res) => {
 const usersPosts = async (req, res) => {
     const { id } = req.user
     const posts = await Post.findAll({
-        where: { UserId: id },
+        where: { user_id: id },
         include: [{ model: Like, as: 'likes' }, { model: Image, as: 'image' }]
     })
     res.json(posts)
