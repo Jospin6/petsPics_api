@@ -1,4 +1,4 @@
-import { Formik, Form } from 'formik'
+import { Formik, Form, useFormik } from 'formik'
 import { Input } from './Input'
 import { SubmitFormBtn } from './SubmitFormBtn'
 import * as Yup from 'yup'
@@ -12,38 +12,47 @@ export const ChangePassword = () => {
         oldPassword: "",
         newPassword: ""
     }
-    
+
     const validationSchema = Yup.object({
         oldPassword: Yup.string().required(),
         newPassword: Yup.string().required()
     })
-    
-    const submit = (data, {resetForm}) => {
-        dispatch(updatePassword(data))
-        resetForm()
-    }
-    return <Formik 
-            initialValues={initialValues}
-            validationSchema={validationSchema}
-            onSubmit={submit}>
-        <Form>
-            <Input
-                labelText="Old password"
-                id="password"
-                type="password"
-                fieldName="oldPassword"
-                placeholder="Enter your old password"
-            />
-            <Input
-                labelText="New password"
-                id="newpassword"
-                type="password"
-                fieldName="newPassword"
-                placeholder="Enter your new password"
-            />
-            <div className='flex justify-end'>
-                <SubmitFormBtn text="Change password" className="w-[150px]" />
-            </div>
-        </Form>
-    </Formik>
+
+    const formik = useFormik({
+        initialValues,
+        validationSchema,
+        onSubmit: (data, { resetForm }) => {
+            dispatch(updatePassword(data))
+            resetForm()
+        }
+    })
+    return <form onSubmit={formik.handleSubmit}>
+        <Input
+            labelText="Old password"
+            id="password"
+            type="password"
+            fieldName="oldPassword"
+            placeholder="Enter your old password"
+            onchange={formik.handleChange}
+            value={formik.values.oldPassword}
+        />
+        {formik.errors.oldPassword && formik.touched.oldPassword && (
+            <div className="text-red-500">{formik.errors.oldPassword}</div>
+        )}
+        <Input
+            labelText="New password"
+            id="newpassword"
+            type="password"
+            fieldName="newPassword"
+            placeholder="Enter your new password"
+            onchange={formik.handleChange}
+            value={formik.values.newPassword}
+        />
+        {formik.errors.newPassword && formik.touched.newPassword && (
+            <div className="text-red-500">{formik.errors.newPassword}</div>
+        )}
+        <div className='flex justify-end'>
+            <SubmitFormBtn text="Change password" className="w-[150px]" />
+        </div>
+    </form>
 }
