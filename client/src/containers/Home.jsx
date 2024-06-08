@@ -8,9 +8,15 @@ import { Comments } from '../components/Comments';
 import { Likes } from '../components/Likes';
 import { UserAccount } from '../components/UserAccount';
 import { UserInfo } from '../components/UserInfo';
+import { useDispatch } from "react-redux"
+import { fetchCurrentUser } from '../slices/user/userApi'
+import { useEffect } from 'react'
 
 export const Home = () => {
-
+    const dispatch =  useDispatch()
+    useEffect(() => {
+        dispatch(fetchCurrentUser())
+    }, [])
     return <div className='min-h-[100vh] h-auto bg-[#FCFCFC]'>
         <Navbar />
         <div className='pt-[50px] w-full pb-4'>
