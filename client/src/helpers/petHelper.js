@@ -14,8 +14,29 @@ const handleDate = (dateTme) => {
 }
 
 const getYearFormat = (dateTime) => {
-    const format = new Date(dateTime)
-    return `${format.getFullYear()} years old`
+    const givenDate = new Date(dateTime)
+    const currentDate = new Date()
+    
+    const timeDiff = currentDate.getTime() - givenDate.getTime()
+    const oneDay = 24 * 60 * 60 * 1000
+    const oneMonth = 30.4375 * oneDay
+    const oneYear = 365.25 * oneDay
+    const oneHour = 60 * 60 * 1000
+
+    const diffInYears = Math.floor(timeDiff / oneYear)
+    const diffInMonth = Math.floor((timeDiff % oneYear) / oneMonth)
+    const diffInDays = Math.floor((timeDiff % oneMonth) / oneDay)
+    const diffInHours = Math.floor((timeDiff % oneDay) / oneHour)
+
+    if (diffInYears > 0) {
+        return `${diffInYears} year${diffInYears > 1 ? 's' : ''}`
+    } else if (diffInMonth > 0) {
+        return `${diffInMonth} Month`
+    } else if(diffInDays > 0) {
+        return `${diffInDays} Day${diffInDays > 1 ? 's' : ''}`
+    } else {
+        return `${diffInHours} Hour${diffInHours > 1 ? 's' : ''}`
+    }
 }
 
 const getDate = date => {
