@@ -13,6 +13,11 @@ const handleDate = (dateTme) => {
     return fullDate
 }
 
+const getYearFormat = (dateTime) => {
+    const format = new Date(dateTime)
+    return `${format.getFullYear()} years old`
+}
+
 const getDate = date => {
     const format = new Date(date)
     return dateFormat(format)
@@ -61,5 +66,6 @@ export {
     getPosts,
     handleDate,
     getUserPets,
-    getSinglePost
+    getSinglePost,
+    getYearFormat
 }
