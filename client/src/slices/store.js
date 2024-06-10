@@ -1,4 +1,4 @@
-import { configureStore } from '@reduxjs/toolkit'
+import { configureStore, combineReducers } from '@reduxjs/toolkit'
 import userReducer from './user/userSlice'
 import petReducer from './pets/petSlice'
 import postReducer from './posts/postSlice'
@@ -7,7 +7,7 @@ import commentsReducer from './comments/commentSlice'
 import singlePostReducer from './posts/singlePostSlice'
 import likeReducer from './likes/likeSlise'
 import currentReducer from './user/currentSlice'
-
+import userPostsReducer from './posts/userPostsSlice'
 
 
 export const store = configureStore({
@@ -19,7 +19,8 @@ export const store = configureStore({
         comments: commentsReducer,
         singlePost: singlePostReducer,
         likes: likeReducer,
-        current: currentReducer
+        current: currentReducer,
+        userPosts: userPostsReducer,
     }
 })
 

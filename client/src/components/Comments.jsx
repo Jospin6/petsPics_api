@@ -29,7 +29,6 @@ export const Comments = () => {
         dispatch(fetchPostComments(id))
         dispatch(fetchSinglePost(id))
     }, [dispatch])
-
     return <div className="mt-2">
         <PostItem pet={post} showCommentIcon="hidden"/>
         <div className="h-[40px] rounded-lg bg-white mt-2 flex justify-between items-center">

@@ -10,7 +10,6 @@ import { UserAccount } from '../components/UserAccount';
 import { UserInfo } from '../components/UserInfo';
 
 export const Home = () => {
-
     return <div className='min-h-[100vh] h-auto bg-[#FCFCFC]'>
         <Navbar />
         <div className='pt-[50px] w-full pb-4'>

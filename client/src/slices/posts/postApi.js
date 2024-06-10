@@ -33,3 +33,13 @@ export const createLike = createAsyncThunk("post/createLike", async (data) => {
         }
     })
 })
+
+export const fetchUserPosts = createAsyncThunk("userPosts/fetchUserPosts", async () => {
+    return await axios.get("http://localhost:3001/user-posts", {
+        headers: {
+            accessToken: localStorage.getItem("accessToken")
+        }
+    })
+    .then(reponse => reponse.data)
+    .catch(error => error.message)
+})

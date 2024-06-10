@@ -1,10 +1,7 @@
-import { FieldErrorMessage } from './FieldErrorMessage'
-
 export const Input = (props) => {
     const { labelText, id, fieldName, type, placeholder, onchange, value } = props
     return <div className="mt-2">
         <label htmlFor={id} className="block mb-[5px] bolder text-[16px]"> {labelText} </label>
-        {/* <FieldErrorMessage fieldName={fieldName} /> */}
         <input
             id={id}
             name={fieldName}
