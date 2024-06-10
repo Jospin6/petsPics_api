@@ -31,11 +31,11 @@ const getYearFormat = (dateTime) => {
     if (diffInYears > 0) {
         return `${diffInYears} year${diffInYears > 1 ? 's' : ''}`
     } else if (diffInMonth > 0) {
-        return `${diffInMonth} Month`
+        return `${diffInMonth} month`
     } else if(diffInDays > 0) {
-        return `${diffInDays} Day${diffInDays > 1 ? 's' : ''}`
+        return `${diffInDays} day${diffInDays > 1 ? 's' : ''}`
     } else {
-        return `${diffInHours} Hour${diffInHours > 1 ? 's' : ''}`
+        return `${diffInHours} hour${diffInHours > 1 ? 's' : ''}`
     }
 }
 
