@@ -31,6 +31,10 @@ export const Comments = () => {
     }, [dispatch])
     return <div className="mt-2">
         <PostItem pet={post} showCommentIcon="hidden"/>
+        <div className="flex justify-between mt-2">
+            <a href="#" className="text-blue-600">Edit</a>
+            <button className="text-red-600">Delete</button>
+        </div>
         <div className="h-[40px] rounded-lg bg-white mt-2 flex justify-between items-center">
             <input type="text" value={comment} onChange={handleComment}
                 className="w-[94%] h-[35px] border-[1px] border-gray-400 
