@@ -43,20 +43,25 @@ const update = async (req, res) => {
     const post = await Post.findByPk(post_id)
     if (!post) {
         return res.status(404).json({ error: "No founded post with this post id" })
-    } else {
-        await post.update({ pet_id, content })
-        if (req.file) {
-            const findImage = Image.find({
-                where: { PostId: post.id }
-            })
-            findImage.update({ url: filename })
-        }
-        res.json("Updated post!")
     }
+    await post.update({ pet_id, content })
+    if (req.file) {
+        const findImage = Image.find({
+            where: { PostId: post.id }
+        })
+        findImage.update({ url: filename })
+    }
+    res.json("Updated post!")
 }
 
 const remove = async (req, res) => {
-
+    const { id } = req.params
+    const post = await Post.findByPk(id)
+    if (!post) {
+        return res.status(404).json({ error: "No founded post with this post id" })
+    }
+    await post.destroy()
+    res.json("Post deleted successfully")
 }
 
 module.exports = {
