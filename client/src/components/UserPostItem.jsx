@@ -12,16 +12,16 @@ export const UserPostItem = ({ pet }) => {
     const handleLike = () => dispatch(createLike({ PostId: pet.id }))
     const handleDeletion = () => dispatch(deletePost(pet.id))
 
-    return <div className="w-full h-[150px] rounded-lg mt-2 flex">
-        <div className="w-[30%] h-[150px]">
+    return <div className="w-full h-[100px] rounded-lg mt-2 flex">
+        <div className="w-[20%] h-[150px]">
             {pet.image && pet.image.length > 0 && (
                 <Image
                     src={`http://localhost:3001/public/images/${pet.image[0]?.url}`}
                     alt="pet image"
-                    style="w-[100%] rounded-l-lg  h-[150px]" />
+                    style="w-[100%] rounded-l-lg  h-[100px]" />
             )}
         </div>
-        <div className="w-[70%] h-[150px] bg-gray-200 p-2 rounded-r-lg relative">
+        <div className="w-[80%] h-[100px] bg-gray-200 p-2 rounded-r-lg relative">
             <div className="flex justify-end">
                 <span className="text-[12px] text-gray-500"> 
                     {handleDate(pet.createdAt)} 
