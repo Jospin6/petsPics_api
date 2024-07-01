@@ -8,6 +8,7 @@ import { Comments } from '../components/Comments';
 import { Likes } from '../components/Likes';
 import { UserAccount } from '../components/UserAccount';
 import { UserInfo } from '../components/UserInfo';
+import { EditPost } from '../components/EditPost';
 
 export const Home = () => {
     return <div className='min-h-[100vh] h-auto bg-[#FCFCFC]'>
@@ -22,6 +23,7 @@ export const Home = () => {
                     <Route path='/likes' element={<Likes/>}/>
                     <Route path='/account' element={<UserAccount/>}/>
                     <Route path='/infos' element={<UserInfo/>}/>
+                    <Route path='/edit_post' element={<EditPost/>}/>
                 </Routes>
             </div>
         </div>
