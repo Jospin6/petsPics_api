@@ -3,18 +3,20 @@ import hearts from '../assets/images/hearts.png'
 import speech from '../assets/images/speech.png'
 import { Link } from 'react-router-dom'
 import { handleDate } from '../helpers/petHelper'
-import {createLike} from '../slices/posts/postApi'
+import { createLike } from '../slices/posts/postApi'
 import { useDispatch } from 'react-redux'
 
 export const PostItem = ({ showCommentIcon, pet }) => {
     const dispatch = useDispatch()
-    const handleLike = () => dispatch(createLike({PostId: pet.id}))
+    const handleLike = () => dispatch(createLike({ PostId: pet.id }))
     return <div className="mt-2 bg-white h-auto rounded-lg w-[100%] small-shadow">
         <div className="w-[100%]">
-            <Image
+            {pet.image && pet.image.length > 0 && (
+                <Image
                 src={`http://localhost:3001/public/images/${pet.image[0]?.url}`}
                 alt="pet image"
                 style="w-[100%] rounded-t-lg  h-[300px]" />
+            )}   
         </div>
         <div className="py-[5px] px-[10px]">
             <div className="flex justify-between">
@@ -30,7 +32,7 @@ export const PostItem = ({ showCommentIcon, pet }) => {
                             alt="heart"
                             style="w-[20px] h-[20px]" />
                     </button>
-                    <span className="text-gray-500 text-[12px]"> { pet.likes?.length } </span>
+                    <span className="text-gray-500 text-[12px]"> {pet.likes?.length} </span>
                 </div>
                 <Link to={`/user/comment/${pet.id}`} className={showCommentIcon}>
                     <Image
