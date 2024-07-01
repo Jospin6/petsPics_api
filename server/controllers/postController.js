@@ -46,10 +46,10 @@ const update = async (req, res) => {
     }
     await post.update({ pet_id, content })
     if (req.file) {
-        const findImage = Image.find({
+        const findImage = await Image.find({
             where: { PostId: post.id }
         })
-        findImage.update({ url: filename })
+        await findImage.update({ url: filename })
     }
     res.json("Updated post!")
 }
