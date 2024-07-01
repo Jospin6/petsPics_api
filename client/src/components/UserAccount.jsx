@@ -25,11 +25,10 @@ export const UserAccount = () => {
             </Link>
         </div>
         <UserPets/>
-        <UserPostItem/>
-        {/* <div>
+        <div>
             {
-                posts.map(pet => (<PostItem  pet={pet} key={pet.id} />))
+                posts.map(pet => (<UserPostItem  pet={pet} key={pet.id} />))
             }
-        </div> */}
+        </div>
     </div>
 }
