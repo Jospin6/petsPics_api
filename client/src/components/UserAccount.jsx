@@ -5,6 +5,7 @@ import { useEffect } from "react"
 import { fetchUserPosts } from "../slices/posts/postApi"
 import { fetchCurrentUser } from '../slices/user/userApi'
 import { PostItem } from "./PostItem"
+import { UserPostItem } from "./UserPostItem"
 
 export const UserAccount = () => {
     const { user } = useSelector(state => state.current)
@@ -24,10 +25,11 @@ export const UserAccount = () => {
             </Link>
         </div>
         <UserPets/>
-        <div>
+        <UserPostItem/>
+        {/* <div>
             {
                 posts.map(pet => (<PostItem  pet={pet} key={pet.id} />))
             }
-        </div>
+        </div> */}
     </div>
 }
