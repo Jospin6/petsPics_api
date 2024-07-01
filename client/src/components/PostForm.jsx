@@ -53,7 +53,7 @@ export const PostForm = () => {
                 id="pet"
                 labelText="Choose a pet"
                 onchange={formik.handleChange}
-                value={formik.values.species}>
+                value={formik.values.pet_id}>
                 <option value=""> Choose a pet </option>
                 {
                     getPets.map(pet => (
@@ -71,7 +71,7 @@ export const PostForm = () => {
                 labelText="Description"
                 placeholder="Write text here"
                 onchange={formik.handleChange}
-                value={formik.values.petName} />
+                value={formik.values.content} />
             {formik.errors.content && formik.touched.content && (
                 <div className="text-red-500">{formik.errors.content}</div>
             )}

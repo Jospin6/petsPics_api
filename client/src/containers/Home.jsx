@@ -23,7 +23,7 @@ export const Home = () => {
                     <Route path='/likes' element={<Likes/>}/>
                     <Route path='/account' element={<UserAccount/>}/>
                     <Route path='/infos' element={<UserInfo/>}/>
-                    <Route path='/edit_post' element={<EditPost/>}/>
+                    <Route path='/edit_post/:id' element={<EditPost/>}/>
                 </Routes>
             </div>
         </div>

@@ -43,3 +43,19 @@ export const fetchUserPosts = createAsyncThunk("userPosts/fetchUserPosts", async
     .then(reponse => reponse.data)
     .catch(error => error.message)
 })
+
+export const updatePost = createAsyncThunk("post/updatePost", async (data) => {
+    return await axios.put("http://localhost:3001/post", data, {
+        headers: {
+            accessToken: localStorage.getItem("accessToken")
+        }
+    })
+})
+
+export const deletePost = createAsyncThunk("post/deletePost", async (id) => {
+    return await axios.delete(`http://localhost:3001/post/${id}`, {
+        headers: {
+            accessToken: localStorage.getItem("accessToken")
+        }
+    })
+})
