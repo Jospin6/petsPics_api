@@ -42,7 +42,7 @@ export const EditPet = () => {
             formData.append('breed', data.breed)
             formData.append('age', data.age)
             formData.append('image', data.image)
-            dispatch(updatePet(formData))
+            dispatch(updatePet(id, formData))
             resetForm()
             navigate("/user")
         }

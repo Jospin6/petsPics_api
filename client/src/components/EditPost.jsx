@@ -44,7 +44,7 @@ export const EditPost = () => {
             formData.append('pet_id', data.pet_id)
             formData.append('content', data.content)
             formData.append('image', data.image)
-            dispatch(updatePost(formData))
+            dispatch(updatePost(id, formData))
             resetForm()
             navigate("/user")
         }
