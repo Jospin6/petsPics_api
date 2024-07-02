@@ -28,3 +28,7 @@ export const fetchUserPets = createAsyncThunk("userPet/fetchUserPets", async () 
     .then(response => response.data)
     .catch(error => error.message)
 })
+
+export const fetchSinglePet = createAsyncThunk("singlePet/fetchSinglePet", async (id) => {
+    
+})
