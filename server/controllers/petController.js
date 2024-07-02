@@ -37,7 +37,32 @@ const userPets = async (req, res) => {
 }
 
 const update = async (req, res) => {
-    
+    const {id} = req.params
+    const pet = await Pet.findOne({
+        where: { id }
+    })
+    const {petName, species, breed, age} = req.body
+    const { filename } = req.file
+    if (!pet) {
+        return res.status(404).json({ error: "No founded pet with this pet id" })
+    } else {
+        if (!req.file) {
+            await pet.update({petName, species, breed, age})
+        } else {
+            await Pet.update({petName, species, breed, age, user_id: id, image: filename})
+        }
+    }
+    res.json("PET UPDATED !")
+}
+
+const remove = async (req, res) => {
+    const { id } = req.params
+    const pet = await Pet.findByPk(id)
+    if (!pet) {
+        return res.status(404).json({ error: "No founded pet with this pet id" })
+    }
+    await pet.destroy()
+    res.json("Pet deleted successfully")
 }
 
 
@@ -46,5 +71,6 @@ module.exports = {
     index,
     update,
     show,
-    userPets
+    userPets,
+    remove
 }
