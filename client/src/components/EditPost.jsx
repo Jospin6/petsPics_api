@@ -11,7 +11,6 @@ import * as Yup from 'yup'
 import { useNavigate, useParams } from "react-router-dom"
 import { updatePost } from '../slices/posts/postApi'
 import { InputFile } from "./InputFile"
-import { getSinglePost } from '../helpers/petHelper'
 import { fetchSinglePost } from '../slices/posts/postApi'
 
 export const EditPost = () => {
@@ -22,8 +21,8 @@ export const EditPost = () => {
     const navigate = useNavigate()
 
     const initialValues = {
-        pet_id: getPost.pet_id,
-        content: getPost.content,
+        pet_id: getPost ? getPost.pet_id : "",
+        content: getPost ? getPost.content : "",
         image: null
     }
 
@@ -45,14 +44,14 @@ export const EditPost = () => {
             formData.append('pet_id', data.pet_id)
             formData.append('content', data.content)
             formData.append('image', data.image)
-            dispatch(updatePost(formData))
+            dispatch(updatePost(id, formData))
             resetForm()
             navigate("/user")
         }
     })
 
     return <div>
-        <div className="text-2xl mb-4">
+        <div className="text-2xl my-4">
             Edit post
         </div>
         <form onSubmit={formik.handleSubmit} encType="multipart/form-data">

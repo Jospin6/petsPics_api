@@ -6,13 +6,17 @@ const {
     create,
     index,
     show,
-    userPets
+    userPets,
+    update,
+    remove
 } = require("../controllers/petController")
 
 router.get("/pets", index)
 router.post("/pets", validateToken, upload.single('image'), create)
 router.get("/pets/:id", show)
 router.get("/userPet", validateToken, userPets)
+router.put("/pets/:id", validateToken, upload.single('image'), update)
+router.delete("/pets/:id", validateToken, remove)
 
 
 

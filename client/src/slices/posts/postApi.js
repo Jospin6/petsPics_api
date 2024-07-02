@@ -44,8 +44,8 @@ export const fetchUserPosts = createAsyncThunk("userPosts/fetchUserPosts", async
     .catch(error => error.message)
 })
 
-export const updatePost = createAsyncThunk("post/updatePost", async (data) => {
-    return await axios.put("http://localhost:3001/post", data, {
+export const updatePost = createAsyncThunk("post/updatePost", async (id,data) => {
+    return await axios.put(`http://localhost:3001/post/${id}`, data, {
         headers: {
             accessToken: localStorage.getItem("accessToken")
         }
