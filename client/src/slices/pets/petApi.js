@@ -34,3 +34,14 @@ export const fetchSinglePet = createAsyncThunk("singlePet/fetchSinglePet", async
         .then(response => response.data)
         .catch(error => error.message)
 })
+
+export const updatePet = createAsyncThunk("singlePet/updatePet", async (data) => {
+    return await axios.put("http://localhost:3001/pets", data, {
+        headers: {
+            accessToken: localStorage.getItem("accessToken")
+        }
+    })
+    .then(response => {
+        console.log(response.data)
+    })
+})

@@ -1,6 +1,6 @@
 import { NewPetForm } from "./NewPetForm"
 import * as Yup from 'yup'
-import { createPet } from '../slices/pets/petApi'
+import { updatePet } from '../slices/pets/petApi'
 import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate, useParams } from "react-router-dom"
 import { useFormik } from "formik"
@@ -42,7 +42,7 @@ export const EditPet = () => {
             formData.append('breed', data.breed)
             formData.append('age', data.age)
             formData.append('image', data.image)
-            dispatch(createPet(formData))
+            dispatch(updatePet(formData))
             resetForm()
             navigate("/user")
         }
