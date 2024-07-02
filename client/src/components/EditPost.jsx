@@ -11,7 +11,6 @@ import * as Yup from 'yup'
 import { useNavigate, useParams } from "react-router-dom"
 import { updatePost } from '../slices/posts/postApi'
 import { InputFile } from "./InputFile"
-import { getSinglePost } from '../helpers/petHelper'
 import { fetchSinglePost } from '../slices/posts/postApi'
 
 export const EditPost = () => {
