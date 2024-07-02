@@ -10,9 +10,9 @@ export const AuthFrame = (props) => {
         linkText, 
         children
     } = props
-    return <div className="w-[60%] h-[500px] grid grid-cols-8 rounded-lg shadow">
-        <div className="col-span-4 h-full p-4 rounded-l-lg flex items-center justify-center">
-            <div className="w-[80%] min-h-[300px] h-auto relative">
+    return <div className="lg:w-[60%] md:w-[80%] h-[500px] mx-2 md:px-0 md:grid md:grid-cols-8 rounded-lg shadow">
+        <div className="md:col-span-4 h-full p-4 rounded-l-lg flex items-center justify-center">
+            <div className="md:w-[80%] w-[95%] min-h-[300px] h-auto relative">
                 <div className="text-lg semi-bold">
                     { formTitle }
                 </div>
@@ -27,7 +27,7 @@ export const AuthFrame = (props) => {
                 </div>
             </div>
         </div>
-        <div className="col-span-4 f-full">
+        <div className="md:col-span-4 f-full hidden md:block">
             <Image 
                 src={cat} 
                 alt="cat" 
