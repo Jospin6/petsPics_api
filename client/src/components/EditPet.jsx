@@ -48,7 +48,7 @@ export const EditPet = () => {
         }
     })
     return <div>
-        <div>Edit pet</div>
+        <div className="text-2xl my-4">Edit pet</div>
         <div>
             <NewPetForm formik={formik} />
         </div>

@@ -51,7 +51,7 @@ export const EditPost = () => {
     })
 
     return <div>
-        <div className="text-2xl mb-4">
+        <div className="text-2xl my-4">
             Edit post
         </div>
         <form onSubmit={formik.handleSubmit} encType="multipart/form-data">
