@@ -21,8 +21,8 @@ export const EditPost = () => {
     const navigate = useNavigate()
 
     const initialValues = {
-        pet_id: getPost.pet_id,
-        content: getPost.content,
+        pet_id: getPost ? getPost.pet_id : "",
+        content: getPost ? getPost.content : "",
         image: null
     }
 

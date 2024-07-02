@@ -1,7 +1,7 @@
 import { NewPetForm } from "./NewPetForm"
 import * as Yup from 'yup'
 import { createPet } from '../slices/pets/petApi'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate, useParams } from "react-router-dom"
 import { useFormik } from "formik"
 import { fetchSinglePet } from "../slices/pets/petApi"
@@ -9,6 +9,7 @@ import { useEffect } from "react"
 
 export const EditPet = () => {
     const { id } = useParams()
+    const pet = useSelector((state) => state.singlePet.pet)
     const dispatch = useDispatch()
     const navigate = useNavigate()
 
@@ -17,10 +18,10 @@ export const EditPet = () => {
     }, [dispatch])
 
     const initialValues = {
-        petName: "",
-        species: "",
-        breed: "",
-        age: "",
+        petName: pet ? pet.petName : "",
+        species: pet ? pet.species : "",
+        breed: pet ? pet.breed : "",
+        age: pet ? pet.age : "",
         image: null
     }
 
