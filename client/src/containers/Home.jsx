@@ -15,7 +15,7 @@ export const Home = () => {
     return <div className='min-h-[100vh] h-auto bg-[#FCFCFC]'>
         <Navbar />
         <div className='pt-[50px] w-full pb-4'>
-            <div className='w-[40%] m-auto min-h-[400px] h-auto'>
+            <div className='lg:w-[40%] md:w-[60%] md:m-auto px-2 md:px-0 min-h-[400px] h-auto'>
                 <Routes>
                     <Route path='/' element={<Pets/>} />
                     <Route path='/newPet' element={<CreatePet/>}/>
