@@ -8,7 +8,7 @@ export const MiniPetCard = ({ pet }) => {
                 alt="pet image"
                 style="w-[100%] rounded-t-lg  h-[150px]" />
             <div className="flex justify-between w-full absolute top-0 letf-0">
-                <button className="bg-red-500 text-white text-[12px] p-[5px] opacity-3 rounded-full">del</button>
+                <button className="bg-red-500 text-white text-[12px] p-[5px] rounded-full">del</button>
                 <button className="bg-blue-500 text-white text-[12px] p-[5px] rounded-full">edit</button>
             </div>
         </div>
