@@ -4,11 +4,18 @@ import { createPet } from '../slices/pets/petApi'
 import { useDispatch } from 'react-redux'
 import { useNavigate, useParams } from "react-router-dom"
 import { useFormik } from "formik"
+import { fetchSinglePet } from "../slices/pets/petApi"
+import { useEffect } from "react"
 
 export const EditPet = () => {
     const { id } = useParams()
     const dispatch = useDispatch()
     const navigate = useNavigate()
+
+    useEffect(() => {
+        dispatch(fetchSinglePet(id))
+    }, [dispatch])
+
     const initialValues = {
         petName: "",
         species: "",
